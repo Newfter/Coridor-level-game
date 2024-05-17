@@ -16,9 +16,9 @@ public class Controller : MonoBehaviour
     [SerializeField] private int speed, jumpForce, ryvokint;
     [SerializeField] private GameObject yep, ryvokgm;
     [SerializeField] private AudioSource audiomen, auwalking;
-    [SerializeField]private float radiusFoot ;
-    [SerializeField]private float radiusBody ;
-    [SerializeField]private int gravity;
+    [SerializeField] private float radiusFoot ;
+    [SerializeField] private float radiusBody ;
+    [SerializeField] private int gravity;
     private bool onGround, walking;
     private Rigidbody rb;
     private void Start() {
@@ -39,8 +39,6 @@ public class Controller : MonoBehaviour
                 if (pelmColl[i].CompareTag("Ground")|| pelmColl[i].CompareTag("Untagged")) 
                     rb.velocity = transform.TransformDirection( new Vector3(0,rb.velocity.y-gravity, 0));
             }
-            
-            if (Input.GetKeyDown(KeyCode.E))rb.AddForce(Vector3.forward * 10000);
             if (gameObject.transform.position.y <= -10)
             {
                 Application.LoadLevel(Application.loadedLevel);
