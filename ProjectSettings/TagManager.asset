@@ -7,6 +7,10 @@ TagManager:
   - Ground
   - SelfDestroyer
   - DubleJump
+  - CinemachineTarget
+  - Gun
+  - Zombie
+  - Bullet
   layers:
   - Default
   - TransparentFX
