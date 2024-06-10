@@ -11,6 +11,10 @@ TagManager:
   - Gun
   - Zombie
   - Bullet
+  - FxTemporaire
+  - bullet2
+  - RPg
+  - RPG
   layers:
   - Default
   - TransparentFX

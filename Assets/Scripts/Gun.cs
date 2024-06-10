@@ -9,13 +9,14 @@ public class Gun : MonoBehaviour
     [SerializeField] private GameObject bullet;
     [SerializeField] private Transform bulletThrou;
     [SerializeField] private int forceOfGun = 100, bulletsLeftInt, bulletsLeftIntsimple;
-    [SerializeField] private AudioSource pistolShot, gunReloading;
     [SerializeField] private TextMeshProUGUI bulletsLeft;
     private bool readyToShoot;
     private WeaponTouch wp;
+    private Audio au;
 
     private void Start()
     {
+        au = FindObjectOfType<Audio>();
         wp = FindObjectOfType<WeaponTouch>();
         this.enabled = false;
         readyToShoot = true;
@@ -27,10 +28,20 @@ public class Gun : MonoBehaviour
     }
 
     private IEnumerator Shooting()
-    {
+    { 
         GameObject bulletInGame = Instantiate(bullet, bulletThrou.position, bulletThrou.rotation);
         bulletInGame.GetComponent<Rigidbody>().AddForce(transform.forward * forceOfGun);
-        pistolShot.Play();
+        switch (type)
+        {
+            case TypeGun.SimplePistol:
+                au.pistolShot.Play();
+                break;
+            case TypeGun.DesertEagle:
+                au.desertEagle.Play();
+                break;
+        }
+
+
         Destroy(bulletInGame, 3);
         readyToShoot = false;
         bulletsLeftInt = bulletsLeftInt - 1;
@@ -39,7 +50,7 @@ public class Gun : MonoBehaviour
         readyToShoot = true;
         if (bulletsLeftInt == 0)
         {
-            gunReloading.Play();
+            au.gunReloading.Play();
             bulletsLeftInt = bulletsLeftIntsimple;
             yield return new WaitForSeconds(2);
         }
@@ -50,5 +61,6 @@ public enum TypeGun
 {
     SimplePistol,
     DesertEagle,
-    SniperRifle
+    SniperRifle,
+    RPG
 }
