@@ -5,15 +5,13 @@ public class WeaponTouch : MonoBehaviour
     public GameObject bulLeftText;
     [SerializeField] private GameObject pressI;
     [SerializeField] private Transform instGuns, gunInHand;
-    private Gun gun;
+    public Gun gun;
 
     private void Start() { pressI.SetActive(true); }
     private void Update()
     {
-        
         Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f ,0));
         RaycastHit hit;
-        
         if (Physics.Raycast(ray, out hit, 100))
         {
             var hitTransform = hit.collider.transform;
@@ -23,11 +21,10 @@ public class WeaponTouch : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.Alpha1))
                 {
                     
-                    var g = hitTransform.GetComponent<Gun>();
+                    gun = hitTransform.GetComponent<Gun>();
+                    gun.EnableGun();
                     if(haveGun)
                     {
-
-                        gunInHand.GetComponent<Gun>().enabled = false;
                         gunInHand.position = hitTransform.position;
                         hitTransform.position = instGuns.position;
                         
@@ -37,19 +34,16 @@ public class WeaponTouch : MonoBehaviour
                         gunInHand.parent = hitTransform.parent;
                         hitTransform.parent = instGuns.parent;
                         gunInHand = hitTransform;
-                        g.enabled = true;
-
                     }
                     else
                     {
-                        g.enabled = true;
                         hitTransform.parent = instGuns;
                         hitTransform.localPosition = Vector3.zero;
                         hitTransform.localRotation = Quaternion.identity;
                         haveGun = true;
                         gunInHand = hitTransform;
+                        
                     }
-
                     gunInHand.GetComponent<Rigidbody>().isKinematic = true;
                 } 
             }
