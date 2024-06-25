@@ -82,7 +82,7 @@ MonoBehaviour:
   gunReoadingSource: {fileID: 308551041986321795}
   bullet: {fileID: 4807987495184487016}
   bulletThrou: {fileID: 4656368010456497322}
-  forceOfGun: 500
+  forceOfGun: 3000
   bulletAmount: 2
   maxBullets: {fileID: 0}
   bulletsLeft: {fileID: 0}

@@ -5,15 +5,18 @@ using UnityEngine;
 using UnityEngine.AI;
 
 public class WalkingToPlayer : MonoBehaviour
-{
-    [SerializeField] private Transform playerTransform;
+{ 
+    private Transform playerTransform;
     [SerializeField] private AudioSource zombieWalking, zombieHitting;
     [SerializeField] private float playerDist, hittingDist;
     private NavMeshAgent agent;
     private Animator anim;
     private int hp = 2;
+    private ZombieCraetion zC;
     private void Start()
     {
+        zC = FindObjectOfType<ZombieCraetion>();
+        playerTransform = FindObjectOfType<WeaponTouch>().transform;
         anim = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
     }
@@ -29,7 +32,11 @@ public class WalkingToPlayer : MonoBehaviour
             anim.SetBool("isWalking", false);
             agent.ResetPath();
         }
-        if(hp == 0) Destroy(gameObject);
+        if (hp == 0)
+        {
+            zC.zombieAmount = zC.zombieAmount - 1;
+            Destroy(gameObject);
+        }
     }
 
     private void OnCollisionEnter(Collision other) { if(other.gameObject.CompareTag("Bullet")){hp = hp - 1;} }

@@ -37,7 +37,7 @@ public class Controller : MonoBehaviour
             for (int i = 0; i < pelmColl.Length; i++)
             {
                 if (pelmColl[i].CompareTag("Ground")|| pelmColl[i].CompareTag("Untagged")) 
-                    rb.velocity = transform.TransformDirection( new Vector3(0,rb.velocity.y-gravity, 0));
+                    rb.linearVelocity = transform.TransformDirection( new Vector3(0,rb.linearVelocity.y-gravity, 0));
             }
             if (gameObject.transform.position.y <= -10)
             {
@@ -50,27 +50,27 @@ public class Controller : MonoBehaviour
             {
                 if (Input.GetKey(KeyCode.W))
                 {
-                    rb.velocity = transform.TransformDirection( new Vector3(0,rb.velocity.y-gravity, speed));
+                    rb.linearVelocity = transform.TransformDirection( new Vector3(0,rb.linearVelocity.y-gravity, speed));
                     walking = true;
                     
                 }
                 
                 if (Input.GetKey(KeyCode.S)) 
                 {
-                    rb.velocity = transform.TransformDirection(new Vector3(0,rb.velocity.y-gravity, -speed));
+                    rb.linearVelocity = transform.TransformDirection(new Vector3(0,rb.linearVelocity.y-gravity, -speed));
                     walking = true; 
                 }
                 
                 if (Input.GetKey(KeyCode.D))
                 {
-                    rb.velocity =transform.TransformDirection( new Vector3(speed,rb.velocity.y-gravity, 0));
+                    rb.linearVelocity =transform.TransformDirection( new Vector3(speed,rb.linearVelocity.y-gravity, 0));
                     walking = true;
                     
                 }
                 
                 if (Input.GetKey(KeyCode.A)) 
                 {
-                    rb.velocity =transform.TransformDirection( new Vector3(-speed,rb.velocity.y-gravity, 0));
+                    rb.linearVelocity =transform.TransformDirection( new Vector3(-speed,rb.linearVelocity.y-gravity, 0));
                     walking = true; 
                 }
                 
@@ -79,26 +79,26 @@ public class Controller : MonoBehaviour
             {
                 if (Input.GetKey(KeyCode.W)) 
                 {
-                    rb.velocity = transform.TransformDirection( new Vector3(0,rb.velocity.y, speed));
+                    rb.linearVelocity = transform.TransformDirection( new Vector3(0,rb.linearVelocity.y, speed));
                     walking = true;
                     
                 }
                 
                 if (Input.GetKey(KeyCode.S)) 
                 {
-                    rb.velocity = transform.TransformDirection(new Vector3(0,rb.velocity.y, -speed));
+                    rb.linearVelocity = transform.TransformDirection(new Vector3(0,rb.linearVelocity.y, -speed));
                     walking = true; 
                 }
                 
                 if (Input.GetKey(KeyCode.D)) 
                 {
-                    rb.velocity =transform.TransformDirection( new Vector3(speed,rb.velocity.y, 0));
+                    rb.linearVelocity =transform.TransformDirection( new Vector3(speed,rb.linearVelocity.y, 0));
                     walking = true; 
                 }
                 
                 if (Input.GetKey(KeyCode.A)) 
                 {
-                    rb.velocity =transform.TransformDirection( new Vector3(-speed,rb.velocity.y, 0));
+                    rb.linearVelocity =transform.TransformDirection( new Vector3(-speed,rb.linearVelocity.y, 0));
                     walking = true; 
                 }
                 

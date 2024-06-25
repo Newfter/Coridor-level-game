@@ -2,14 +2,15 @@ using UnityEngine;
 public class WeaponTouch : MonoBehaviour
 {
     public bool haveGun = false;
-    public GameObject bulLeftText;
-    [SerializeField] private GameObject pressI;
+    [SerializeField] private GameObject pressI, bulPanel;
     [SerializeField] private Transform instGuns, gunInHand;
-    public Gun gun;
+    private Gun gun;
 
     private void Start() { pressI.SetActive(true); }
     private void Update()
     {
+        bulPanel.SetActive(false);
+        if(haveGun) bulPanel.SetActive(true);
         Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f ,0));
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, 100))
@@ -49,15 +50,18 @@ public class WeaponTouch : MonoBehaviour
             }
             else pressI.SetActive(false);
         }
-        if(Input.GetKeyDown(KeyCode.Q)){DropWeapon();}
+
+        if (Input.GetKeyDown(KeyCode.Q)) { DropWeapon(); }
     }
     private void OnDrawGizmos() { Gizmos.DrawSphere(instGuns.position, 0.1f); }
     
     public void DropWeapon()
     {
+        if(gunInHand is null) return;
         var r = gunInHand.GetComponent<Rigidbody>();
         r.isKinematic = false;
         r.AddForce(transform.forward * 200);
         gunInHand.parent = null;
+        gunInHand = null;
     }
 }
