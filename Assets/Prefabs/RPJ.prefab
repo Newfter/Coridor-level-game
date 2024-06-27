@@ -82,8 +82,8 @@ MonoBehaviour:
   gunReoadingSource: {fileID: 308551041986321795}
   bullet: {fileID: 4807987495184487016}
   bulletThrou: {fileID: 4656368010456497322}
-  forceOfGun: 3000
-  bulletAmount: 2
+  forceOfGun: 5000
+  bulletAmount: 10
   maxBullets: {fileID: 0}
   bulletsLeft: {fileID: 0}
 --- !u!65 &4476142145768152892
@@ -118,6 +118,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 6604ec275e39d194d9162001acf2453b, type: 3}
+  m_Resource: {fileID: 8300000, guid: 6604ec275e39d194d9162001acf2453b, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -214,6 +215,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: c27700c003922a749ad1d08afeef606c, type: 3}
+  m_Resource: {fileID: 8300000, guid: c27700c003922a749ad1d08afeef606c, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -357,10 +359,13 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a0f42bc673a0ac5499b2de2678de199a, type: 2}
+  - {fileID: 2100000, guid: 7b6bc3f4fe6d2d14291ba24d715fe7ee, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -434,6 +439,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rocket (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1200784959478927248, guid: 866a00a80b8769f408565ed52209ee8a, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 10200c3aeb36ea94ebef74cd6db793f2, type: 2}
+    - target: {fileID: 4314451036690003885, guid: 866a00a80b8769f408565ed52209ee8a, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 59fe9a64c6277264890ad2ea93273724, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

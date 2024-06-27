@@ -12,15 +12,8 @@ public class CanvasController : MonoBehaviour
         zC = FindObjectOfType<ZombieCraetion>();
         mode.SetActive(false);
     }
-    
-    public void Restart()
-    {
-        click.Play();
-        Application.LoadLevel(Application.loadedLevel);
-    }
     public void modeOn() { mode.SetActive(true); }
     public void ModeOff(){ mode.SetActive(false);}
-
     public void Play() { SceneManager.LoadScene("Scenes/SimpleScene"); }
     public void Easy() { PlayerPrefs.SetString("Mode", ZombieCraetion.Mode.Easy.ToString()); }
     public void Medium(){PlayerPrefs.SetString("Mode", ZombieCraetion.Mode.Medium.ToString());}

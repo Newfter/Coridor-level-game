@@ -13,7 +13,7 @@ public class WeaponTouch : MonoBehaviour
         if(haveGun) bulPanel.SetActive(true);
         Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f ,0));
         RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, 100))
+        if (Physics.Raycast(ray, out hit, 1000))
         {
             var hitTransform = hit.collider.transform;
             if (hitTransform.gameObject.CompareTag("Gun"))
@@ -51,7 +51,10 @@ public class WeaponTouch : MonoBehaviour
             else pressI.SetActive(false);
         }
 
-        if (Input.GetKeyDown(KeyCode.Q)) { DropWeapon(); }
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            DropWeapon();
+        }
     }
     private void OnDrawGizmos() { Gizmos.DrawSphere(instGuns.position, 0.1f); }
     
@@ -63,5 +66,6 @@ public class WeaponTouch : MonoBehaviour
         r.AddForce(transform.forward * 200);
         gunInHand.parent = null;
         gunInHand = null;
+        haveGun = false;
     }
 }
