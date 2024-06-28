@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4476142145768152892}
   - component: {fileID: 7993058867078977994}
   - component: {fileID: 308551041986321795}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: RPJ
   m_TagString: Gun
   m_Icon: {fileID: 0}
@@ -312,7 +312,7 @@ GameObject:
   - component: {fileID: 425125737774456430}
   - component: {fileID: 1930378090678080802}
   - component: {fileID: 7966292810705574347}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -439,10 +439,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rocket (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1085521604241169466, guid: 866a00a80b8769f408565ed52209ee8a, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 1200784959478927248, guid: 866a00a80b8769f408565ed52209ee8a, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 10200c3aeb36ea94ebef74cd6db793f2, type: 2}
+    - target: {fileID: 3254034594718628555, guid: 866a00a80b8769f408565ed52209ee8a, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4314451036690003885, guid: 866a00a80b8769f408565ed52209ee8a, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 

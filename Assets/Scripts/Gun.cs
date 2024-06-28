@@ -1,19 +1,22 @@
 using System.Collections;
+using DefaultNamespace;
 using TMPro;
 using UnityEngine;
 public class Gun : MonoBehaviour
 {
     public TypeGun type;
+    public WeaponSO weaponSO;
     [SerializeField] private AudioSource gunShootSource,gunReoadingSource;
-    [SerializeField] private GameObject bullet;
     [SerializeField] private Transform bulletThrou;
     [SerializeField] private int forceOfGun = 100, bulletAmount;
     [SerializeField] private TextMeshProUGUI maxBullets, bulletsLeft;
     private int currentBulletAmount;
     private bool readyToShoot;
+    private WeaponTouch wp;
 
     private void Start()
     {
+        wp = FindAnyObjectByType<WeaponTouch>();
         currentBulletAmount = bulletAmount;
         readyToShoot = false;
     }
@@ -27,7 +30,7 @@ public class Gun : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0)&& readyToShoot) {StartCoroutine(Shooting()); }
+        if (Input.GetKeyDown(KeyCode.Mouse0)&& readyToShoot&& wp.haveGun) {StartCoroutine(Shooting()); }
     }
 
     private IEnumerator Shooting()
@@ -42,9 +45,9 @@ public class Gun : MonoBehaviour
         {
             angle = transform.forward;
         }    
-        GameObject bulletInGame = Instantiate(bullet, bulletThrou.position, bulletThrou.rotation);
+        GameObject bulletInGame = Instantiate(weaponSO.bullet, bulletThrou.position, bulletThrou.rotation);
         var r = bulletInGame.GetComponent<Rigidbody>();
-        Physics.IgnoreCollision(bullet.GetComponent<Collider>(),bulletInGame.GetComponent<Collider>());
+        Physics.IgnoreCollision(weaponSO.bullet.GetComponent<Collider>(),bulletInGame.GetComponent<Collider>());
         r.isKinematic = false;
         r.AddForce(angle * forceOfGun);
         gunShootSource.Play();

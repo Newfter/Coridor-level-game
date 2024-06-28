@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4482239962904697578}
   - component: {fileID: 2972043930641118099}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Shoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -143,7 +143,7 @@ GameObject:
   - component: {fileID: 3665098348448087930}
   - component: {fileID: 8258947082579849589}
   - component: {fileID: 5468210307203016456}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: 'Pistol '
   m_TagString: Gun
   m_Icon: {fileID: 0}
@@ -299,7 +299,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3159232196802264894}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BulThrou
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -331,7 +331,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1800807248218739269}
   - component: {fileID: 2753453016037755276}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Reload
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3908861994482384268}
   - component: {fileID: 2767855028234844764}
   - component: {fileID: 9152213292861520248}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Rocket (1)
   m_TagString: RPg
   m_Icon: {fileID: 0}
@@ -162,7 +162,7 @@ GameObject:
   - component: {fileID: 3597834708522984104}
   - component: {fileID: 1939928548019256392}
   - component: {fileID: 4314451036690003885}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Explosion
   m_TagString: FxTemporaire
   m_Icon: {fileID: 0}
