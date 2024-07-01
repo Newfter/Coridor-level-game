@@ -39,7 +39,6 @@ public class Gun : MonoBehaviour
         RaycastHit hit;
         Vector3 angle;
         if (Physics.Raycast(ray, out hit, 1000))
-        
             angle = (hit.point - bulletThrou.position).normalized;
         else
         {
@@ -47,7 +46,7 @@ public class Gun : MonoBehaviour
         }    
         GameObject bulletInGame = Instantiate(weaponSO.bullet, bulletThrou.position, bulletThrou.rotation);
         var r = bulletInGame.GetComponent<Rigidbody>();
-        Physics.IgnoreCollision(weaponSO.bullet.GetComponent<Collider>(),bulletInGame.GetComponent<Collider>());
+        //Physics.IgnoreCollision(weaponSO.bullet.GetComponent<Collider>(),bulletInGame.GetComponent<Collider>());
         r.isKinematic = false;
         r.AddForce(angle * forceOfGun);
         gunShootSource.Play();

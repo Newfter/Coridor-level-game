@@ -41,7 +41,7 @@ AudioSource:
   m_GameObject: {fileID: 735821364079230364}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 950320719648216223, guid: 62917645416fe0246ad75a963fa83b15, type: 2}
   m_audioClip: {fileID: 8300000, guid: 99cdca2350ae740438aab0fa1988c506, type: 3}
   m_Resource: {fileID: 8300000, guid: 99cdca2350ae740438aab0fa1988c506, type: 3}
   m_PlayOnAwake: 0
@@ -255,9 +255,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
+  weaponSO: {fileID: 0}
   gunShootSource: {fileID: 2972043930641118099}
   gunReoadingSource: {fileID: 2753453016037755276}
-  bullet: {fileID: 3102897584836963165, guid: 180eaa945cdcf8c46b982b4c5462cde4, type: 3}
   bulletThrou: {fileID: 3159232196802264894}
   forceOfGun: 100
   bulletAmount: 15
@@ -347,7 +347,7 @@ Transform:
   m_GameObject: {fileID: 9168558165720584646}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.395, y: -2.327, z: -0.355}
+  m_LocalPosition: {x: 0.93, y: -0.23, z: -0.355}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -362,7 +362,7 @@ AudioSource:
   m_GameObject: {fileID: 9168558165720584646}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 950320719648216223, guid: 62917645416fe0246ad75a963fa83b15, type: 2}
   m_audioClip: {fileID: 8300000, guid: c27700c003922a749ad1d08afeef606c, type: 3}
   m_Resource: {fileID: 8300000, guid: c27700c003922a749ad1d08afeef606c, type: 3}
   m_PlayOnAwake: 0
