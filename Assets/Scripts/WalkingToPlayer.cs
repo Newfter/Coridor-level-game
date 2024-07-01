@@ -8,13 +8,15 @@ public class WalkingToPlayer : MonoBehaviour
 { 
     private Transform playerTransform;
     [SerializeField] private AudioSource zombieWalking, zombieHitting;
-    [SerializeField] private float playerDist, hittingDist;
+    [SerializeField] private float playerDist, hittingDist, playHp;
     private NavMeshAgent agent;
     private Animator anim;
-    private int hp = 2;
+    private int hp;
     private ZombieCraetion zC;
     private void Start()
     {
+        hp = PlayerPrefs.GetInt("hp");
+        playHp = PlayerPrefs.GetFloat("playHp");
         zC = FindObjectOfType<ZombieCraetion>();
         playerTransform = FindObjectOfType<WeaponTouch>().transform;
         anim = GetComponent<Animator>();
@@ -39,5 +41,11 @@ public class WalkingToPlayer : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision other) { if(other.gameObject.CompareTag("Bullet")){hp = hp - 1;} }
+    private void OnCollisionEnter(Collision other) {
+        if (other.gameObject.CompareTag("Bullet"))
+        {
+            hp = hp - 1;
+            PlayerPrefs.SetInt("hp", hp);
+        } 
+    }
 }
