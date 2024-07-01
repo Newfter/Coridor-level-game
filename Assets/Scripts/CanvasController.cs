@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class CanvasController : MonoBehaviour
 {
     [SerializeField] private AudioSource click;
-    [SerializeField] private GameObject mode, settings;
+    [SerializeField] private GameObject mode, settings, sOn,sOff,mOn,mOff;
     [SerializeField] private AudioMixer music;
     private ZombieCraetion zC;
     public void Start()
@@ -23,8 +23,28 @@ public class CanvasController : MonoBehaviour
     public void Hard() {PlayerPrefs.SetString("Mode", ZombieCraetion.Mode.Hard.ToString());}
     public void Settings() { settings.SetActive(true); }
     public void OffSettings() { settings.SetActive(false); }
-    //public void SoundOn(){//music;}
-    public void SoundOff(){}
-    public void MusicOn(){}
-    public void MusicOff(){}
+    public void SoundOn()
+    {
+        music.SetFloat("Sound", 0);
+        sOn.SetActive(false);
+        sOff.SetActive(true);
+    }
+    public void SoundOff()
+    {
+        music.SetFloat("Sound", -80);
+        sOff.SetActive(false);
+        sOn.SetActive(true);
+    }
+    public void MusicOn()
+    {
+        music.SetFloat("Music", 0);
+        mOn.SetActive(false);
+        mOff.SetActive(true);
+    }
+    public void MusicOff()
+    {
+        music.SetFloat("Music", -80);
+        mOff.SetActive(false);
+        mOn.SetActive(true);
+    }
 }
