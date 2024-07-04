@@ -46,7 +46,6 @@ public class Gun : MonoBehaviour
         }    
         GameObject bulletInGame = Instantiate(weaponSO.bullet, bulletThrou.position, bulletThrou.rotation);
         var r = bulletInGame.GetComponent<Rigidbody>();
-        //Physics.IgnoreCollision(weaponSO.bullet.GetComponent<Collider>(),bulletInGame.GetComponent<Collider>());
         r.isKinematic = false;
         r.AddForce(angle * forceOfGun);
         gunShootSource.Play();

@@ -1,3 +1,5 @@
+using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
@@ -6,45 +8,55 @@ using UnityEngine.SceneManagement;
 public class CanvasController : MonoBehaviour
 {
     [SerializeField] private AudioSource click;
-    [SerializeField] private GameObject mode, settings, sOn,sOff,mOn,mOff;
+    [SerializeField] private GameObject mode, settings, sOn,sOff,mOn,mOff, coinPanel;
     [SerializeField] private AudioMixer music;
-    private ZombieCraetion zC;
+    [SerializeField] private TextMeshProUGUI coins;
+    public int _coinsInt;
     public void Start()
     {
         settings.SetActive(false);
-        zC = FindObjectOfType<ZombieCraetion>();
         mode.SetActive(false);
+        _coinsInt = PlayerPrefs.GetInt("coinsInt");
     }
-    public void modeOn() { mode.SetActive(true); }
-    public void ModeOff(){ mode.SetActive(false);}
-    public void Play() { SceneManager.LoadScene("Scenes/SimpleScene"); }
-    public void Easy() { PlayerPrefs.SetString("Mode", ZombieCraetion.Mode.Easy.ToString()); }
-    public void Medium(){PlayerPrefs.SetString("Mode", ZombieCraetion.Mode.Medium.ToString());}
-    public void Hard() {PlayerPrefs.SetString("Mode", ZombieCraetion.Mode.Hard.ToString());}
-    public void Settings() { settings.SetActive(true); }
-    public void OffSettings() { settings.SetActive(false); }
+    private void Update() { coins.text = _coinsInt.ToString(); }
+    public void modeOn() { mode.SetActive(true); click.Play(); }
+    public void ModeOff(){ mode.SetActive(false); click.Play();}
+    public void Play() { SceneManager.LoadScene("Scenes/SimpleScene"); click.Play();}
+    public void Easy() { PlayerPrefs.SetString("Mode", ZombieCraetion.Mode.Easy.ToString()); click.Play();}
+    public void Medium(){PlayerPrefs.SetString("Mode", ZombieCraetion.Mode.Medium.ToString()); click.Play();}
+    public void Hard() {PlayerPrefs.SetString("Mode", ZombieCraetion.Mode.Hard.ToString()); click.Play();}
+    public void Settings() { settings.SetActive(true); click.Play();}
+    public void OffSettings() { settings.SetActive(false); click.Play();}
+    
+    public void OnCoin() { coinPanel.SetActive(true); click.Play();}
+    
+    public void OffCoin() {  coinPanel.SetActive(false); click.Play();}
     public void SoundOn()
     {
         music.SetFloat("Sound", 0);
         sOn.SetActive(false);
         sOff.SetActive(true);
+        click.Play();
     }
     public void SoundOff()
     {
         music.SetFloat("Sound", -80);
         sOff.SetActive(false);
         sOn.SetActive(true);
+        click.Play();
     }
     public void MusicOn()
     {
         music.SetFloat("Music", 0);
         mOn.SetActive(false);
         mOff.SetActive(true);
+        click.Play();
     }
     public void MusicOff()
     {
         music.SetFloat("Music", -80);
         mOff.SetActive(false);
         mOn.SetActive(true);
+        click.Play();
     }
 }

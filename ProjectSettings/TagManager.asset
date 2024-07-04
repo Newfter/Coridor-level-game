@@ -15,6 +15,7 @@ TagManager:
   - bullet2
   - RPg
   - RPG
+  - Coin
   layers:
   - Default
   - TransparentFX
