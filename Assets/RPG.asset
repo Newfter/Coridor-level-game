@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: RPG
   m_EditorClassIdentifier: 
   name: RPG
-  bullet: {fileID: 1085521604241169466, guid: 866a00a80b8769f408565ed52209ee8a, type: 3}
+  bullet: {fileID: 6693928293030829417, guid: 34983fc5a6b7bd240ae2a6b83e12d15f, type: 3}

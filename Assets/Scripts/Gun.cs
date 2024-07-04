@@ -9,14 +9,15 @@ public class Gun : MonoBehaviour
     [SerializeField] private AudioSource gunShootSource,gunReoadingSource;
     [SerializeField] private Transform bulletThrou;
     [SerializeField] private int forceOfGun = 100, bulletAmount;
-    [SerializeField] private TextMeshProUGUI maxBullets, bulletsLeft;
     private int currentBulletAmount;
     private bool readyToShoot;
     private WeaponTouch wp;
+    private CanvasManager currentCanvas;
 
     private void Start()
     {
         wp = FindAnyObjectByType<WeaponTouch>();
+        currentCanvas = FindAnyObjectByType<CanvasManager>();
         currentBulletAmount = bulletAmount;
         readyToShoot = false;
     }
@@ -24,8 +25,7 @@ public class Gun : MonoBehaviour
     public void EnableGun()
     {
         readyToShoot = true;
-        maxBullets.text = bulletAmount.ToString() + "/";
-        bulletsLeft.text = bulletAmount.ToString();
+        currentCanvas.InitTextBullet(bulletAmount);
     }
 
     private void Update()
@@ -52,7 +52,7 @@ public class Gun : MonoBehaviour
         Destroy(bulletInGame, 3);
         readyToShoot = false;
         currentBulletAmount = currentBulletAmount - 1;
-        bulletsLeft.text = currentBulletAmount.ToString();
+        currentCanvas.UpdateAmountOfBuller(currentBulletAmount);
         yield return new WaitForSeconds(0.7f);
       
         if (currentBulletAmount <= 0)

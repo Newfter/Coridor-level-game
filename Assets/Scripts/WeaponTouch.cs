@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 public class WeaponTouch : MonoBehaviour
 {
@@ -21,8 +22,7 @@ public class WeaponTouch : MonoBehaviour
                 pressI.SetActive(true);
                 if (Input.GetKeyDown(KeyCode.Alpha1))
                 {
-                    
-                    gun = hitTransform.GetComponent<Gun>();
+                    gun = hitTransform.gameObject.GetComponent<Gun>();
                     gun.EnableGun();
                     if(haveGun)
                     {
