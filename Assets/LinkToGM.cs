@@ -1,6 +1,2 @@
 using UnityEngine;
-
-public class LinkToGM : MonoBehaviour
-{
-    public GameObject GameObject;
-}
+public class LinkToGm:MonoBehaviour{public GameObject GameObject;}

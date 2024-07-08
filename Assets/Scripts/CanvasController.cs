@@ -16,7 +16,6 @@ public class CanvasController : MonoBehaviour
     {
         settings.SetActive(false);
         mode.SetActive(false);
-        _coinsInt = PlayerPrefs.GetInt("coinsInt");
     }
     private void Update() { coins.text = _coinsInt.ToString(); }
     public void modeOn() { mode.SetActive(true); click.Play(); }

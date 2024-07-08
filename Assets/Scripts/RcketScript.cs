@@ -18,7 +18,7 @@ public class RcketScript : MonoBehaviour
             {
                 damageable.TakeDamage(10);
             }
-            else if( collider.TryGetComponent(out LinkToGM LinkToGM))
+            else if( collider.TryGetComponent(out LinkToGm LinkToGM))
             {
                 if (LinkToGM.GameObject.TryGetComponent(out damageable))
                 {

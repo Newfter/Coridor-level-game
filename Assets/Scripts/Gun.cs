@@ -1,6 +1,5 @@
 using System.Collections;
 using DefaultNamespace;
-using TMPro;
 using UnityEngine;
 public class Gun : MonoBehaviour
 {
@@ -13,7 +12,6 @@ public class Gun : MonoBehaviour
     private bool readyToShoot;
     private WeaponTouch wp;
     private CanvasManager currentCanvas;
-
     private void Start()
     {
         wp = FindAnyObjectByType<WeaponTouch>();
@@ -21,29 +19,19 @@ public class Gun : MonoBehaviour
         currentBulletAmount = bulletAmount;
         readyToShoot = false;
     }
-
     public void EnableGun()
     {
         readyToShoot = true;
         currentCanvas.InitTextBullet(bulletAmount);
     }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Mouse0)&& readyToShoot&& wp.haveGun) {StartCoroutine(Shooting()); }
-    }
-
+    private void Update() { if (Input.GetKeyDown(KeyCode.Mouse0)&& readyToShoot&& wp.haveGun) {StartCoroutine(Shooting()); } }
     private IEnumerator Shooting()
     { 
         Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f ,0));
         RaycastHit hit;
         Vector3 angle;
-        if (Physics.Raycast(ray, out hit, 1000))
-            angle = (hit.point - bulletThrou.position).normalized;
-        else
-        {
-            angle = transform.forward;
-        }    
+        if (Physics.Raycast(ray, out hit, 1000)) {angle = (hit.point - bulletThrou.position).normalized;}
+        else { angle = transform.forward; }    
         GameObject bulletInGame = Instantiate(weaponSO.bullet, bulletThrou.position, bulletThrou.rotation);
         var r = bulletInGame.GetComponent<Rigidbody>();
         r.isKinematic = false;
@@ -53,8 +41,8 @@ public class Gun : MonoBehaviour
         readyToShoot = false;
         currentBulletAmount = currentBulletAmount - 1;
         currentCanvas.UpdateAmountOfBuller(currentBulletAmount);
-        yield return new WaitForSeconds(0.7f);
-      
+        if (type == TypeGun.Usi) { yield return new WaitForSeconds(0.2f); }
+        else { yield return new WaitForSeconds(0.7f); }
         if (currentBulletAmount <= 0)
         {
             gunReoadingSource.Play();
@@ -64,11 +52,11 @@ public class Gun : MonoBehaviour
         readyToShoot = true;
     }
 }
-
 public enum TypeGun
 {
     SimplePistol,
     DesertEagle,
     SniperRifle,
-    RPG
+    RPG,
+    Usi
 }
