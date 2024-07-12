@@ -58,5 +58,6 @@ public enum TypeGun
     DesertEagle,
     SniperRifle,
     RPG,
-    Usi
+    Usi,
+    Grenade
 }

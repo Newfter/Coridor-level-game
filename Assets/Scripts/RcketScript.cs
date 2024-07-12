@@ -14,19 +14,18 @@ public class RcketScript : MonoBehaviour
         var colliderList =Physics.OverlapSphere(transform.position, 4f);
         foreach (var collider in colliderList)
         {
-            if (collider.TryGetComponent(out damageable))
-            {
-                damageable.TakeDamage(10);
-            }
-            else if( collider.TryGetComponent(out LinkToGm LinkToGM))
-            {
-                if (LinkToGM.GameObject.TryGetComponent(out damageable))
-                {
-                    damageable.TakeDamage(10);
-                }
-            }
+            Damage(collider.gameObject,10);
         }
         Destroy(explosion.gameObject, 5f);
         Destroy(gameObject);
+    }
+
+    public void Damage(GameObject gm,int damage)
+    {
+        if (gm.TryGetComponent(out damageable)) damageable.TakeDamage(damage);
+        else if( gm.TryGetComponent(out LinkToGm LinkToGM))
+        {
+            if (LinkToGM.GameObject.TryGetComponent(out damageable)) damageable.TakeDamage(damage);
+        }
     }
 }

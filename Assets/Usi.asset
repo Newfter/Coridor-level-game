@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Usi
   m_EditorClassIdentifier: 
   name: Usi
-  bullet: {fileID: 1358877257589180072, guid: aaa6255a9e9bfe344842bd29507e1f41, type: 3}
+  bullet: {fileID: 5688627355495183085, guid: b1d5df9bc42337d41b1c65f6d0872c4f, type: 3}
