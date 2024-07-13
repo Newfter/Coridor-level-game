@@ -10204,6 +10204,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3020471514391653285, guid: 08afa89b1b01bd44f8e1d8548941cb05, type: 3}
+      propertyPath: hp
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8021152441493362793, guid: 08afa89b1b01bd44f8e1d8548941cb05, type: 3}
       propertyPath: m_Name
       value: Zombie
@@ -58644,6 +58648,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pistol
       objectReference: {fileID: 0}
+    - target: {fileID: 8553079985628571907, guid: 6fa5905d649d1f64989bada10c091601, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 2ec1ea29ea053d740991b8d820c7e3a8, type: 2}
     - target: {fileID: 8800797796223347292, guid: 6fa5905d649d1f64989bada10c091601, type: 3}
       propertyPath: m_LocalPosition.x
       value: -12.336

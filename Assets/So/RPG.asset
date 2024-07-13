@@ -14,3 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: RPG
   bullet: {fileID: 6693928293030829417, guid: 34983fc5a6b7bd240ae2a6b83e12d15f, type: 3}
+  damageAmount: 15
+  bulletAmount: 5
+  forceOfGun: 2000
+  speed: 1
+  reloadingTime: 3

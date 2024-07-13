@@ -1,11 +1,13 @@
 using System;
 using Cinemachine;
+using DefaultNamespace;
 using UnityEngine;
 
 public class RcketScript : MonoBehaviour
 {
     [SerializeField] private ParticleSystem explosion;
     private Damageable damageable;
+    public WeaponSO wS;
     private void OnCollisionEnter(Collision other)
     {
         explosion.transform.parent = null;
@@ -14,7 +16,7 @@ public class RcketScript : MonoBehaviour
         var colliderList =Physics.OverlapSphere(transform.position, 4f);
         foreach (var collider in colliderList)
         {
-            Damage(collider.gameObject,10);
+            Damage(collider.gameObject, wS.damageAmount);
         }
         Destroy(explosion.gameObject, 5f);
         Destroy(gameObject);

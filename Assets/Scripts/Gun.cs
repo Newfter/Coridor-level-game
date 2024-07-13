@@ -3,11 +3,9 @@ using DefaultNamespace;
 using UnityEngine;
 public class Gun : MonoBehaviour
 {
-    public TypeGun type;
     public WeaponSO weaponSO;
     [SerializeField] private AudioSource gunShootSource,gunReoadingSource;
     [SerializeField] private Transform bulletThrou;
-    [SerializeField] private int forceOfGun = 100, bulletAmount;
     private int currentBulletAmount;
     private bool readyToShoot;
     private WeaponTouch wp;
@@ -16,13 +14,13 @@ public class Gun : MonoBehaviour
     {
         wp = FindAnyObjectByType<WeaponTouch>();
         currentCanvas = FindAnyObjectByType<CanvasManager>();
-        currentBulletAmount = bulletAmount;
+        currentBulletAmount = weaponSO.bulletAmount;
         readyToShoot = false;
     }
     public void EnableGun()
     {
         readyToShoot = true;
-        currentCanvas.InitTextBullet(bulletAmount);
+        currentCanvas.InitTextBullet(weaponSO.bulletAmount);
     }
     private void Update() { if (Input.GetKeyDown(KeyCode.Mouse0)&& readyToShoot&& wp.haveGun) {StartCoroutine(Shooting()); } }
     private IEnumerator Shooting()
@@ -34,20 +32,20 @@ public class Gun : MonoBehaviour
         else { angle = transform.forward; }    
         GameObject bulletInGame = Instantiate(weaponSO.bullet, bulletThrou.position, bulletThrou.rotation);
         var r = bulletInGame.GetComponent<Rigidbody>();
+        if (bulletInGame.TryGetComponent(out BulletScript bulletScript)) { bulletScript.weaponSo = weaponSO; }
+        if (bulletInGame.TryGetComponent(out RcketScript rcketScript)) { rcketScript.wS = weaponSO;}
         r.isKinematic = false;
-        r.AddForce(angle * forceOfGun);
+        r.AddForce(angle * weaponSO.forceOfGun);
         gunShootSource.Play();
-        Destroy(bulletInGame, 3);
         readyToShoot = false;
         currentBulletAmount = currentBulletAmount - 1;
         currentCanvas.UpdateAmountOfBuller(currentBulletAmount);
-        if (type == TypeGun.Usi) { yield return new WaitForSeconds(0.2f); }
-        else { yield return new WaitForSeconds(0.7f); }
+        yield return new WaitForSeconds(weaponSO.speed);
         if (currentBulletAmount <= 0)
         {
             gunReoadingSource.Play();
-            yield return new WaitForSeconds(2);
-            currentBulletAmount = bulletAmount;
+            yield return new WaitForSeconds(weaponSO.reloadingTime);
+            currentBulletAmount = weaponSO.bulletAmount;
         }
         readyToShoot = true;
     }

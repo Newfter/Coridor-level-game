@@ -10,7 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c136dcdd1a8a43fdbaea52cab8dc2c16, type: 3}
-  m_Name: Pistol
+  m_Name: Usi
   m_EditorClassIdentifier: 
-  name: Pistol
-  bullet: {fileID: 3102897584836963165, guid: 180eaa945cdcf8c46b982b4c5462cde4, type: 3}
+  name: Usi
+  bullet: {fileID: 5688627355495183085, guid: b1d5df9bc42337d41b1c65f6d0872c4f, type: 3}
+  damageAmount: 1
+  bulletAmount: 50
+  forceOfGun: 2000
+  speed: 0.15
+  reloadingTime: 3
