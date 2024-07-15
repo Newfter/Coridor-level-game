@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using DefaultNamespace;
 using UnityEngine;
@@ -6,8 +7,8 @@ public class Gun : MonoBehaviour
     public WeaponSO weaponSO;
     [SerializeField] private AudioSource gunShootSource,gunReoadingSource;
     [SerializeField] private Transform bulletThrou;
-    private int currentBulletAmount;
-    private bool readyToShoot;
+    public int currentBulletAmount;
+    public bool readyToShoot;
     private WeaponTouch wp;
     private CanvasManager currentCanvas;
     private void Start()
@@ -41,13 +42,7 @@ public class Gun : MonoBehaviour
         currentBulletAmount = currentBulletAmount - 1;
         currentCanvas.UpdateAmountOfBuller(currentBulletAmount);
         yield return new WaitForSeconds(weaponSO.speed);
-        if (currentBulletAmount <= 0)
-        {
-            gunReoadingSource.Play();
-            yield return new WaitForSeconds(weaponSO.reloadingTime);
-            currentBulletAmount = weaponSO.bulletAmount;
-        }
-        readyToShoot = true;
+        readyToShoot = currentBulletAmount > 0;
     }
 }
 public enum TypeGun
