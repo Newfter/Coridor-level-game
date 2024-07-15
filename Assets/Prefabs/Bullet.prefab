@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7372894668801853223}
   - component: {fileID: 5187505048870071548}
   - component: {fileID: 2105943408216281961}
+  - component: {fileID: 3556453025469301897}
   m_Layer: 6
   m_Name: Bullet
   m_TagString: Bullet
@@ -136,3 +137,16 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.151344, y: 0.1595768, z: 0.3043744}
   m_Center: {x: 0, y: -0.0013319962, z: 0.0028904006}
+--- !u!114 &3556453025469301897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3102897584836963165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 912aa87fdff84235b59d18d3654ce14c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponSo: {fileID: 0}

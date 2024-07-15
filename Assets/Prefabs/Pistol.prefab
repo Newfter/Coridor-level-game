@@ -270,6 +270,7 @@ GameObject:
   - component: {fileID: 856919381145775925}
   - component: {fileID: 307932225841235168}
   - component: {fileID: 7234511500305212500}
+  - component: {fileID: 7912370290584041180}
   m_Layer: 0
   m_Name: Pistol
   m_TagString: Gun
@@ -308,13 +309,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1eb3b9c17c1b7ea47a2c5babcc98d605, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   weaponSO: {fileID: 11400000, guid: c7d156e5f003afe4cab054a74f441c7d, type: 2}
   gunShootSource: {fileID: 2809813788453457680}
   gunReoadingSource: {fileID: 4875965606135735923}
   bulletThrou: {fileID: 2808193838110642808}
-  forceOfGun: 100
-  bulletAmount: 15
 --- !u!54 &307932225841235168
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -361,8 +359,29 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.39872742, y: 0.34375095, z: 0.19796896}
-  m_Center: {x: 0.08490467, y: -0.050837517, z: -0.029280663}
+  m_Size: {x: 0.11025229, y: 0.34375095, z: 0.15830675}
+  m_Center: {x: -0.008424044, y: -0.050837517, z: -0.09532316}
+--- !u!65 &7912370290584041180
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5259329010728242171}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.10919052, y: 0.11582816, z: 0.48704535}
+  m_Center: {x: -0.013442904, y: 0.050620586, z: 0.067494065}
 --- !u!1 &8864668719621253341
 GameObject:
   m_ObjectHideFlags: 0
@@ -389,13 +408,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8864668719621253341}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8800797796223347292}
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!33 &1158736293346752026
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -427,7 +446,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 89b8df5766a2dc1459b66909fd2f643e, type: 2}
+  - {fileID: 2100000, guid: 2c4ac4d4b7dbf0b4fb4befa0d05542ca, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

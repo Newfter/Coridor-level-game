@@ -57,5 +57,6 @@ public enum TypeGun
     SniperRifle,
     RPG,
     Usi,
-    Grenade
+    Grenade,
+    Ak47
 }

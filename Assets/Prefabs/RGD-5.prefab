@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 130830416187383767}
   - component: {fileID: 4703402268971398565}
   - component: {fileID: 2483032417358653357}
-  - component: {fileID: 2697199586099397496}
+  - component: {fileID: 4640410728813577280}
   m_Layer: 0
   m_Name: RGD-5
   m_TagString: Gun
@@ -89,7 +89,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &2697199586099397496
+--- !u!114 &4640410728813577280
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -101,13 +101,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1eb3b9c17c1b7ea47a2c5babcc98d605, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   weaponSO: {fileID: 0}
   gunShootSource: {fileID: 0}
   gunReoadingSource: {fileID: 0}
   bulletThrou: {fileID: 0}
-  forceOfGun: 100
-  bulletAmount: 0
 --- !u!1 &2152888629382722953
 GameObject:
   m_ObjectHideFlags: 0

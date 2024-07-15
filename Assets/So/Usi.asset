@@ -16,6 +16,6 @@ MonoBehaviour:
   bullet: {fileID: 5688627355495183085, guid: b1d5df9bc42337d41b1c65f6d0872c4f, type: 3}
   damageAmount: 1
   bulletAmount: 50
-  forceOfGun: 2000
+  forceOfGun: 2500
   speed: 0.15
   reloadingTime: 3

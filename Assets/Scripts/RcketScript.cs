@@ -1,5 +1,3 @@
-using System;
-using Cinemachine;
 using DefaultNamespace;
 using UnityEngine;
 
