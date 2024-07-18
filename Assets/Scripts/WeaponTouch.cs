@@ -1,13 +1,20 @@
+using System.Collections;
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 public class WeaponTouch : MonoBehaviour
 {
     public bool haveGun = false;
-    [SerializeField] private GameObject pressI, bulPanel, pressX;
-    [SerializeField] private Transform instGuns, gunInHand;
-    private Gun gun;
+    [SerializeField] private GameObject pressI, bulPanel, pressX, toManyBullets;
+    public Transform instGuns, gunInHand;
+    public Gun gun;
 
-    private void Start() { pressI.SetActive(true); pressX.SetActive(false); }
+    private void Start() 
+    { 
+        toManyBullets.SetActive(false);
+        pressI.SetActive(true);
+        pressX.SetActive(false);
+    }
     private void Update()
     {
         bulPanel.SetActive(false);
@@ -50,16 +57,31 @@ public class WeaponTouch : MonoBehaviour
             }
             else pressI.SetActive(false);
 
-            if (hitTransform.gameObject.CompareTag("plusBullets1"))
+            if (hitTransform.gameObject.CompareTag("plusBullets"))
             {
                 pressX.SetActive(true);
-                //if(gun.currentBulletAmount == )
+                if (Input.GetKeyDown(KeyCode.T))
+                {
+                    if (gun.currentBulletAmount < gun.weaponSO.bulletAmount)
+                    {
+                        Destroy(hitTransform.gameObject);
+                        gun.currentBulletAmount = gun.weaponSO.bulletAmount;
+                    }
+                    else { StartCoroutine(Bober()); }
+                }
             }
             else{pressX.SetActive(false);}
         }
         if (Input.GetKeyDown(KeyCode.Q)) { DropWeapon(); }
     }
     private void OnDrawGizmos() { Gizmos.DrawSphere(instGuns.position, 0.1f); }
+
+    private IEnumerator Bober()
+    {
+        toManyBullets.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+        toManyBullets.SetActive(false);
+    }
     
     public void DropWeapon()
     {

@@ -23,7 +23,12 @@ public class Gun : MonoBehaviour
         readyToShoot = true;
         currentCanvas.InitTextBullet(weaponSO.bulletAmount);
     }
-    private void Update() { if (Input.GetKeyDown(KeyCode.Mouse0)&& readyToShoot&& wp.haveGun) {StartCoroutine(Shooting()); } }
+
+    private void Update()
+    {
+        if(wp.gun != this){return;}
+        if (Input.GetKeyDown(KeyCode.Mouse0)&& readyToShoot&& wp.haveGun) {StartCoroutine(Shooting()); }
+    }
     private IEnumerator Shooting()
     { 
         Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f ,0));

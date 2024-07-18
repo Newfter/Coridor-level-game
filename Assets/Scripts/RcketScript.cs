@@ -4,18 +4,16 @@ using UnityEngine;
 public class RcketScript : MonoBehaviour
 {
     [SerializeField] private ParticleSystem explosion;
+    [SerializeField] private AudioSource explousion;
     private Damageable damageable;
     public WeaponSO wS;
     private void OnCollisionEnter(Collision other)
     {
         explosion.transform.parent = null;
         explosion.Play();
-
-        var colliderList =Physics.OverlapSphere(transform.position, 4f);
-        foreach (var collider in colliderList)
-        {
-            Damage(collider.gameObject, wS.damageAmount);
-        }
+        explousion.Play();
+        var colliderList = Physics.OverlapSphere(transform.position, 4f);
+        foreach (var collider in colliderList) { Damage(collider.gameObject, wS.damageAmount); }
         Destroy(explosion.gameObject, 5f);
         Destroy(gameObject);
     }
