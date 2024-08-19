@@ -16,9 +16,9 @@ TagManager:
   - RPg
   - RPG
   - Coin
-  - plusBullets1
-  - plusBullets2
-  - plusBullets
+  - Ak47
+  - Pistol
+  - Usi
   layers:
   - Default
   - TransparentFX

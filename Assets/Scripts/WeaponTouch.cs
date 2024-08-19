@@ -5,15 +5,15 @@ using UnityEngine;
 public class WeaponTouch : MonoBehaviour
 {
     public bool haveGun = false;
-    [SerializeField] private GameObject pressI, bulPanel, pressX, toManyBullets;
+    [SerializeField] private GameObject press1, bulPanel, pressT, toManyBullets;
     public Transform instGuns, gunInHand;
     public Gun gun;
 
     private void Start() 
     { 
         toManyBullets.SetActive(false);
-        pressI.SetActive(true);
-        pressX.SetActive(false);
+        press1.SetActive(true);
+        pressT.SetActive(false);
     }
     private void Update()
     {
@@ -26,7 +26,7 @@ public class WeaponTouch : MonoBehaviour
             var hitTransform = hit.collider.transform;
             if (hitTransform.gameObject.CompareTag("Gun"))
             {
-                pressI.SetActive(true);
+                press1.SetActive(true);
                 if (Input.GetKeyDown(KeyCode.Alpha1))
                 {
                     gun = hitTransform.gameObject.GetComponent<Gun>();
@@ -55,11 +55,12 @@ public class WeaponTouch : MonoBehaviour
                     gunInHand.GetComponent<Rigidbody>().isKinematic = true;
                 } 
             }
-            else pressI.SetActive(false);
+            else press1.SetActive(false);
 
-            if (hitTransform.gameObject.CompareTag("plusBullets"))
+            if (!gunInHand) return;
+            if (hitTransform.gameObject.CompareTag(gunInHand.gameObject.GetComponent<Gun>().weaponSO.name))
             {
-                pressX.SetActive(true);
+                pressT.SetActive(true);
                 if (Input.GetKeyDown(KeyCode.T))
                 {
                     if (gun.currentBulletAmount < gun.weaponSO.bulletAmount)
@@ -67,16 +68,16 @@ public class WeaponTouch : MonoBehaviour
                         Destroy(hitTransform.gameObject);
                         gun.currentBulletAmount = gun.weaponSO.bulletAmount;
                     }
-                    else { StartCoroutine(Bober()); }
+                    else { StartCoroutine(ToManyBullets()); }
                 }
             }
-            else{pressX.SetActive(false);}
+            else{pressT.SetActive(false);}
         }
         if (Input.GetKeyDown(KeyCode.Q)) { DropWeapon(); }
     }
     private void OnDrawGizmos() { Gizmos.DrawSphere(instGuns.position, 0.1f); }
 
-    private IEnumerator Bober()
+    private IEnumerator ToManyBullets()
     {
         toManyBullets.SetActive(true);
         yield return new WaitForSeconds(0.5f);
