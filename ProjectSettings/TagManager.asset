@@ -16,9 +16,7 @@ TagManager:
   - RPg
   - RPG
   - Coin
-  - Ak47
-  - Pistol
-  - Usi
+  - Ammo
   layers:
   - Default
   - TransparentFX

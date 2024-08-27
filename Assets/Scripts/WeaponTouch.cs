@@ -2,88 +2,87 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Serialization;
+
 public class WeaponTouch : MonoBehaviour
 {
-    public bool haveGun = false;
-    [SerializeField] private GameObject press1, bulPanel, pressT, toManyBullets;
+    public bool haveGun = false; 
+    [SerializeField] private GameObject bulPanel, weaponButton,  pressT;
     public Transform instGuns, gunInHand;
     public Gun gun;
+    public PlayerBullets pB;
 
-    private void Start() 
-    { 
-        toManyBullets.SetActive(false);
-        press1.SetActive(true);
+    private void Start()
+    {
+        pB = FindAnyObjectByType<PlayerBullets>();
+        weaponButton.SetActive(true);
         pressT.SetActive(false);
     }
     private void Update()
     {
         bulPanel.SetActive(false);
         if(haveGun) bulPanel.SetActive(true);
+        Raycast();
+        if (Input.GetKeyDown(KeyCode.Q)) { DropWeapon(); }
+    }
+
+    private void Raycast()
+    {
         Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f ,0));
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, 100))
         {
             var hitTransform = hit.collider.transform;
-            if (hitTransform.gameObject.CompareTag("Gun"))
-            {
-                press1.SetActive(true);
-                if (Input.GetKeyDown(KeyCode.Alpha1))
-                {
-                    gun = hitTransform.gameObject.GetComponent<Gun>();
-                    gun.EnableGun();
-                    if(haveGun)
-                    {
-                        gunInHand.position = hitTransform.position;
-                        hitTransform.position = instGuns.position;
-                        
-                        gunInHand.rotation = hitTransform.rotation;
-                        hitTransform.rotation = instGuns.rotation;
-                        
-                        gunInHand.parent = hitTransform.parent;
-                        hitTransform.parent = instGuns.parent;
-                        gunInHand = hitTransform;
-                    }
-                    else
-                    {
-                        hitTransform.parent = instGuns;
-                        hitTransform.localPosition = Vector3.zero;
-                        hitTransform.localRotation = Quaternion.identity;
-                        haveGun = true;
-                        gunInHand = hitTransform;
-                        
-                    }
-                    gunInHand.GetComponent<Rigidbody>().isKinematic = true;
-                } 
-            }
-            else press1.SetActive(false);
-
+            if (hitTransform.gameObject.CompareTag("Gun")) PointAtGun(hitTransform);
+            else weaponButton.SetActive(false);
             if (!gunInHand) return;
-            if (hitTransform.gameObject.CompareTag(gunInHand.gameObject.GetComponent<Gun>().weaponSO.name))
+            if (hitTransform.gameObject.CompareTag("Ammo"))
             {
                 pressT.SetActive(true);
-                if (Input.GetKeyDown(KeyCode.T))
+                if (Input.GetKeyDown(KeyCode.E))
                 {
-                    if (gun.currentBulletAmount < gun.weaponSO.bulletAmount)
+                    if (hitTransform.gameObject.TryGetComponent(out AmmoController ammoController))
                     {
-                        Destroy(hitTransform.gameObject);
-                        gun.currentBulletAmount = gun.weaponSO.bulletAmount;
+                        pB.ReceiveAmmo(ammoController.gun);
                     }
-                    else { StartCoroutine(ToManyBullets()); }
+                    Destroy(hitTransform.gameObject);
                 }
             }
             else{pressT.SetActive(false);}
         }
-        if (Input.GetKeyDown(KeyCode.Q)) { DropWeapon(); }
+
+    }
+
+    private void PointAtGun(Transform hitTransform)
+    {
+        weaponButton.SetActive(true);
+        if (!Input.GetKeyDown(KeyCode.Alpha1)) return;
+        gun = hitTransform.gameObject.GetComponent<Gun>();
+        gun.EnableGun();
+        if(haveGun)
+        {
+            gunInHand.position = hitTransform.position;
+            hitTransform.position = instGuns.position;
+                        
+            gunInHand.rotation = hitTransform.rotation;
+            hitTransform.rotation = instGuns.rotation;
+                        
+            gunInHand.parent = hitTransform.parent;
+            hitTransform.parent = instGuns.parent;
+            gunInHand = hitTransform;
+        }
+        else
+        {
+            hitTransform.parent = instGuns;
+            hitTransform.localPosition = Vector3.zero;
+            hitTransform.localRotation = Quaternion.identity;
+            haveGun = true;
+            gunInHand = hitTransform;
+                        
+        }
+        gunInHand.GetComponent<Rigidbody>().isKinematic = true;
     }
     private void OnDrawGizmos() { Gizmos.DrawSphere(instGuns.position, 0.1f); }
-
-    private IEnumerator ToManyBullets()
-    {
-        toManyBullets.SetActive(true);
-        yield return new WaitForSeconds(0.5f);
-        toManyBullets.SetActive(false);
-    }
-    
     public void DropWeapon()
     {
         if(gunInHand is null) return;

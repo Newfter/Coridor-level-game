@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using DefaultNamespace;
 using UnityEngine;
@@ -11,23 +10,37 @@ public class Gun : MonoBehaviour
     public bool readyToShoot;
     private WeaponTouch wp;
     private CanvasManager currentCanvas;
+    private PlayerBullets pB;
     private void Start()
     {
+        pB = FindFirstObjectByType<PlayerBullets>();
         wp = FindAnyObjectByType<WeaponTouch>();
         currentCanvas = FindAnyObjectByType<CanvasManager>();
-        currentBulletAmount = weaponSO.bulletAmount;
+        currentBulletAmount = weaponSO.clipAmount;
         readyToShoot = false;
     }
     public void EnableGun()
     {
         readyToShoot = true;
-        currentCanvas.InitTextBullet(weaponSO.bulletAmount);
+        currentCanvas.InitTextBullet(weaponSO.clipAmount);
     }
 
     private void Update()
     {
-        if(wp.gun != this){return;}
-        if (Input.GetKeyDown(KeyCode.Mouse0)&& readyToShoot&& wp.haveGun) {StartCoroutine(Shooting()); }
+        if (wp.gun != this){return;}
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            weaponSO.max = weaponSO.type switch
+            {
+                TypeGun.Usi => 50,
+                TypeGun.Ak47 => 15,
+                TypeGun.SimplePistol => 10,
+                _ => weaponSO.max
+            };
+            pB.PlusBullets(ref currentBulletAmount, weaponSO.type);
+        }
+        if (Input.GetKeyDown(KeyCode.Mouse0)&& readyToShoot&& wp.haveGun&& currentBulletAmount >= 0) {StartCoroutine(Shooting()); }
     }
     private IEnumerator Shooting()
     { 
