@@ -4,13 +4,14 @@ using UnityEngine;
 public class Gun : MonoBehaviour
 {
     public WeaponSO weaponSO;
-    [SerializeField] private AudioSource gunShootSource,gunReoadingSource;
     [SerializeField] private Transform bulletThrou;
+    [SerializeField] private AudioSource shoot, reload;
     public int currentBulletAmount;
     public bool readyToShoot;
     private WeaponTouch wp;
     private CanvasManager currentCanvas;
     private PlayerBullets pB;
+    
     private void Start()
     {
         pB = FindFirstObjectByType<PlayerBullets>();
@@ -28,17 +29,19 @@ public class Gun : MonoBehaviour
     private void Update()
     {
         if (wp.gun != this){return;}
-
         if (Input.GetKeyDown(KeyCode.R))
         {
-            weaponSO.max = weaponSO.type switch
+            reload.Play();
+            int minus;
+            var bulletAmount = pB.ReturnTotalBullets(weaponSO.type);
+            if (bulletAmount < weaponSO.clipAmount)
             {
-                TypeGun.Usi => 50,
-                TypeGun.Ak47 => 15,
-                TypeGun.SimplePistol => 10,
-                _ => weaponSO.max
-            };
-            pB.PlusBullets(ref currentBulletAmount, weaponSO.type);
+                currentBulletAmount += bulletAmount;
+                bulletAmount = 0;
+            }
+            minus = weaponSO.clipAmount - currentBulletAmount;
+            currentBulletAmount = weaponSO.clipAmount;
+            bulletAmount -= minus;
         }
         if (Input.GetKeyDown(KeyCode.Mouse0)&& readyToShoot&& wp.haveGun&& currentBulletAmount >= 0) {StartCoroutine(Shooting()); }
     }
@@ -55,7 +58,7 @@ public class Gun : MonoBehaviour
         if (bulletInGame.TryGetComponent(out RcketScript rcketScript)) { rcketScript.wS = weaponSO;}
         r.isKinematic = false;
         r.AddForce(angle * weaponSO.forceOfGun);
-        gunShootSource.Play();
+        shoot.Play();
         readyToShoot = false;
         currentBulletAmount = currentBulletAmount - 1;
         currentCanvas.UpdateAmountOfBuller(currentBulletAmount);

@@ -270,9 +270,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponSO: {fileID: 11400000, guid: 9f0cb361a165995418498e116c1b8eb9, type: 2}
-  gunShootSource: {fileID: 1389259208911802049}
-  gunReoadingSource: {fileID: 2235153113487965885}
   bulletThrou: {fileID: 232778619475816673}
+  shoot: {fileID: 1389259208911802049}
+  reload: {fileID: 2235153113487965885}
+  currentBulletAmount: 0
+  readyToShoot: 0
 --- !u!82 &1389259208911802049
 AudioSource:
   m_ObjectHideFlags: 0

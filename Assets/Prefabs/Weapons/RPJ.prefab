@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 1867883817413329168}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.02, y: 0.145, z: 1.72}
+  m_LocalPosition: {x: 0.02, y: 0.145, z: 2.123}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -108,13 +108,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1eb3b9c17c1b7ea47a2c5babcc98d605, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 3
-  weaponSO: {fileID: 11400000, guid: c7d156e5f003afe4cab054a74f441c7d, type: 2}
-  gunShootSource: {fileID: 7993058867078977994}
-  gunReoadingSource: {fileID: 308551041986321795}
+  weaponSO: {fileID: 11400000, guid: 592bed407d30c4242b572292ed647e4f, type: 2}
   bulletThrou: {fileID: 7407520722215112056}
-  forceOfGun: 5000
-  bulletAmount: 10
+  shoot: {fileID: 7993058867078977994}
+  reload: {fileID: 308551041986321795}
+  currentBulletAmount: 0
+  readyToShoot: 0
 --- !u!65 &4476142145768152892
 BoxCollider:
   m_ObjectHideFlags: 0

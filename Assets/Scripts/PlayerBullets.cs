@@ -15,15 +15,18 @@ public class PlayerBullets : MonoBehaviour
                 variableWeaponClip.totalBulletAmount += variableWeaponClip.weaponSO.clipAmount;
         }
     }
-    public void PlusBullets(ref int currentBulletAmount, TypeGun type)
+
+    public int ReturnTotalBullets(TypeGun type)
     {
-        int plus = ;
-        
-        
+        foreach (var variable in weaponClips)
+        {
+            if (variable.weaponSO.type == type) return variable.totalBulletAmount;
+        }
+
+        return 0;
     }
-    
 
-
+}
 
 [Serializable]
 public class WeaponAndClip

@@ -1,23 +1,14 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
 public class ExplosiveBarrelController : MonoBehaviour
 {
     [SerializeField] private ParticleSystem pS;
-    [SerializeField] private int damage1;
-    [SerializeField] private float radius;
-    private Damageable damageable;
-
-    private void OnCollisionEnter(Collision other)
+    private void OnCollisionEnter(Collision other) { if (other.gameObject.CompareTag("Bullet")) { StartCoroutine(Explousion()); } }
+    private IEnumerator Explousion()
     {
-        if (other.gameObject.CompareTag("Bullet"))
-        {
-            pS.transform.parent = null;
-            pS.Play();
-            gameObject.GetComponent<MeshRenderer>().enabled = false;
-            
-        }
+        pS.Play();
+        gameObject.GetComponent<MeshRenderer>().enabled = false;
+        yield return new WaitForSeconds(3);
+        Destroy(gameObject);
     }
 }

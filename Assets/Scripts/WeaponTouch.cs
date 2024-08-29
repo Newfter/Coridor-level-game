@@ -18,14 +18,15 @@ public class WeaponTouch : MonoBehaviour
         weaponButton.SetActive(true);
         pressT.SetActive(false);
     }
+    
     private void Update()
     {
         bulPanel.SetActive(false);
         if(haveGun) bulPanel.SetActive(true);
         Raycast();
         if (Input.GetKeyDown(KeyCode.Q)) { DropWeapon(); }
-    }
-
+    } 
+    
     private void Raycast()
     {
         Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f ,0));
@@ -82,7 +83,9 @@ public class WeaponTouch : MonoBehaviour
         }
         gunInHand.GetComponent<Rigidbody>().isKinematic = true;
     }
+    
     private void OnDrawGizmos() { Gizmos.DrawSphere(instGuns.position, 0.1f); }
+    
     public void DropWeapon()
     {
         if(gunInHand is null) return;

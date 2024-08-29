@@ -15,7 +15,8 @@ MonoBehaviour:
   name: Pistol
   bullet: {fileID: 3102897584836963165, guid: 180eaa945cdcf8c46b982b4c5462cde4, type: 3}
   damageAmount: 4
-  bulletAmount: 10
+  clipAmount: 7
   forceOfGun: 1500
   speed: 0.6
   reloadingTime: 2
+  type: 0

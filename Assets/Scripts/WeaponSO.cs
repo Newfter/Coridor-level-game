@@ -7,7 +7,7 @@ namespace DefaultNamespace
     {
         public string name;
         public GameObject bullet;
-        public int damageAmount, clipAmount, forceOfGun, max;
+        public int damageAmount, clipAmount, forceOfGun;
         public float speed, reloadingTime;
         public TypeGun type;
     }
