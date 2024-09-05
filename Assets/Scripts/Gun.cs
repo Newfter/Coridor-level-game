@@ -1,6 +1,7 @@
 using System.Collections;
 using DefaultNamespace;
 using UnityEngine;
+using TMPro;
 public class Gun : MonoBehaviour
 {
     public WeaponSO weaponSO;
@@ -9,31 +10,31 @@ public class Gun : MonoBehaviour
     public int currentBulletAmount;
     public bool readyToShoot;
     private WeaponTouch wp;
-    private CanvasManager currentCanvas;
     private PlayerBullets pB;
     
     private void Start()
     {
         pB = FindFirstObjectByType<PlayerBullets>();
         wp = FindAnyObjectByType<WeaponTouch>();
-        currentCanvas = FindAnyObjectByType<CanvasManager>();
         currentBulletAmount = weaponSO.clipAmount;
         readyToShoot = false;
     }
+
     public void EnableGun()
     {
         readyToShoot = true;
-        currentCanvas.InitTextBullet(weaponSO.clipAmount);
+        pB.bulletsLeft.text = currentBulletAmount.ToString();
     }
-
     private void Update()
     {
         if (wp.gun != this){return;}
         if (Input.GetKeyDown(KeyCode.R))
         {
+            var bulletAmount = pB.ReturnTotalBullets(weaponSO.type);
+            if (bulletAmount <= 0) return;
             reload.Play();
             int minus;
-            var bulletAmount = pB.ReturnTotalBullets(weaponSO.type);
+            readyToShoot = true;
             if (bulletAmount < weaponSO.clipAmount)
             {
                 currentBulletAmount += bulletAmount;
@@ -42,8 +43,11 @@ public class Gun : MonoBehaviour
             minus = weaponSO.clipAmount - currentBulletAmount;
             currentBulletAmount = weaponSO.clipAmount;
             bulletAmount -= minus;
+            pB.bulletsLeft.text = currentBulletAmount.ToString();
+            pB.totalBullets.text = bulletAmount.ToString();
+            pB.MinusTotalBullets(bulletAmount, weaponSO.type);
         }
-        if (Input.GetKeyDown(KeyCode.Mouse0)&& readyToShoot&& wp.haveGun&& currentBulletAmount >= 0) {StartCoroutine(Shooting()); }
+        if (Input.GetKey(KeyCode.Mouse0)&& readyToShoot&& wp.haveGun&& currentBulletAmount > 0) {StartCoroutine(Shooting()); }
     }
     private IEnumerator Shooting()
     { 
@@ -61,9 +65,10 @@ public class Gun : MonoBehaviour
         shoot.Play();
         readyToShoot = false;
         currentBulletAmount = currentBulletAmount - 1;
-        currentCanvas.UpdateAmountOfBuller(currentBulletAmount);
+        
         yield return new WaitForSeconds(weaponSO.speed);
         readyToShoot = currentBulletAmount > 0;
+        pB.bulletsLeft.text = currentBulletAmount.ToString();
     }
 }
 public enum TypeGun

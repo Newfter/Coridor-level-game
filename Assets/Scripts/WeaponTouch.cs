@@ -71,6 +71,8 @@ public class WeaponTouch : MonoBehaviour
             gunInHand.parent = hitTransform.parent;
             hitTransform.parent = instGuns.parent;
             gunInHand = hitTransform;
+            var bulletAmount = pB.ReturnTotalBullets(gun.weaponSO.type);
+            pB.TextUpdate(bulletAmount);
         }
         else
         {
@@ -81,6 +83,7 @@ public class WeaponTouch : MonoBehaviour
             gunInHand = hitTransform;
                         
         }
+        
         gunInHand.GetComponent<Rigidbody>().isKinematic = true;
     }
     

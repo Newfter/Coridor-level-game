@@ -2,17 +2,28 @@ using System;
 using System.Collections.Generic;
 using DefaultNamespace;
 using UnityEngine;
+using TMPro;
 
 public class PlayerBullets : MonoBehaviour
 {
+    public TextMeshProUGUI totalBullets, bulletsLeft;
     public List<WeaponAndClip> weaponClips;
+    private WeaponTouch weaponTouch;
 
     public void ReceiveAmmo(TypeGun type)
     {
         foreach (var variableWeaponClip in weaponClips)
         {
             if (variableWeaponClip.weaponSO.type == type)
+            {
                 variableWeaponClip.totalBulletAmount += variableWeaponClip.weaponSO.clipAmount;
+                weaponTouch = FindFirstObjectByType<WeaponTouch>();
+                if (weaponTouch.gun.weaponSO.type == type)
+                {
+                    totalBullets.text = variableWeaponClip.totalBulletAmount.ToString();
+                }
+            }
+            
         }
     }
 
@@ -24,6 +35,18 @@ public class PlayerBullets : MonoBehaviour
         }
 
         return 0;
+    }
+    public void TextUpdate(int total) { totalBullets.text = total.ToString(); }
+    public void MinusTotalBullets(int bulletAmount, TypeGun type)
+    {
+        foreach (var variable in weaponClips)
+        {
+            if (variable.weaponSO.type == type)
+            {
+                variable.totalBulletAmount = bulletAmount;
+            }
+        }
+        
     }
 
 }

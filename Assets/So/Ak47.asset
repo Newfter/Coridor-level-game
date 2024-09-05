@@ -15,7 +15,8 @@ MonoBehaviour:
   name: Ak47
   bullet: {fileID: 283142728740884298, guid: 960eb2f2cae05a34b85eccf0155bdb0f, type: 3}
   damageAmount: 5
-  bulletAmount: 15
+  clipAmount: 15
   forceOfGun: 1750
   speed: 0.5
   reloadingTime: 4
+  type: 6
