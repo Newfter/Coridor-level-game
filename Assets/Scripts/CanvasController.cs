@@ -1,10 +1,7 @@
-using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
-
-
 public class CanvasController : MonoBehaviour
 {
     [SerializeField] private AudioSource click;
@@ -14,6 +11,7 @@ public class CanvasController : MonoBehaviour
     public int _coinsInt;
     public void Start()
     {
+        _coinsInt = PlayerPrefs.GetInt("coinsInt");
         settings.SetActive(false);
         mode.SetActive(false);
     }
