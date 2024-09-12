@@ -9,6 +9,12 @@ public class PlayerBullets : MonoBehaviour
     public TextMeshProUGUI totalBullets, bulletsLeft;
     public List<WeaponAndClip> weaponClips;
     private WeaponTouch weaponTouch;
+    private InstGrenata iG;
+
+    private void Start()
+    {
+        iG = FindAnyObjectByType<InstGrenata>();
+    }
 
     public void ReceiveAmmo(TypeGun type)
     {
@@ -18,12 +24,15 @@ public class PlayerBullets : MonoBehaviour
             {
                 variableWeaponClip.totalBulletAmount += variableWeaponClip.weaponSO.clipAmount;
                 weaponTouch = FindFirstObjectByType<WeaponTouch>();
-                if (weaponTouch.gun.weaponSO.type == type)
+                if (type == TypeGun.Grenade)
                 {
-                    totalBullets.text = variableWeaponClip.totalBulletAmount.ToString();
+                    iG.grenadePanel.SetActive(true);
+                    iG.totalGrenadeLeft.text = ReturnTotalBullets(TypeGun.Grenade).ToString();
+                    return;
                 }
+                if (weaponTouch.gun == null) return;
+                if (weaponTouch.gun.weaponSO.type == type) { totalBullets.text = variableWeaponClip.totalBulletAmount.ToString(); }
             }
-            
         }
     }
 

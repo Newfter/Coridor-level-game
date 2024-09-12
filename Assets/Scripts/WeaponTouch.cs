@@ -11,7 +11,6 @@ public class WeaponTouch : MonoBehaviour
     public Transform instGuns, gunInHand;
     public Gun gun;
     public PlayerBullets pB;
-
     private void Start()
     {
         pB = FindAnyObjectByType<PlayerBullets>();
@@ -24,7 +23,11 @@ public class WeaponTouch : MonoBehaviour
         bulPanel.SetActive(false);
         if(haveGun) bulPanel.SetActive(true);
         Raycast();
-        if (Input.GetKeyDown(KeyCode.Q)) { DropWeapon(); }
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            DropWeapon();
+            pressT.SetActive(false);
+        }
     } 
     
     private void Raycast()
@@ -36,7 +39,6 @@ public class WeaponTouch : MonoBehaviour
             var hitTransform = hit.collider.transform;
             if (hitTransform.gameObject.CompareTag("Gun")) PointAtGun(hitTransform);
             else weaponButton.SetActive(false);
-            if (!gunInHand) return;
             if (hitTransform.gameObject.CompareTag("Ammo"))
             {
                 pressT.SetActive(true);

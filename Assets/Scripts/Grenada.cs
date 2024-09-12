@@ -6,12 +6,10 @@ public class Grenada : MonoBehaviour
     [SerializeField] private int damage1;
     [SerializeField] private float radius;
     [SerializeField] private AudioSource explousion;
-    private WeaponTouch wp;
     private Damageable damageable;
 
     private void Start()
     {
-        wp = FindFirstObjectByType<WeaponTouch>();
         StartCoroutine(GrenadaThrou());
     }
     private IEnumerator GrenadaThrou()

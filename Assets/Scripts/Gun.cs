@@ -11,6 +11,7 @@ public class Gun : MonoBehaviour
     public bool readyToShoot;
     private WeaponTouch wp;
     private PlayerBullets pB;
+    private bool isReloading = false;
     
     private void Start()
     {
@@ -30,24 +31,31 @@ public class Gun : MonoBehaviour
         if (wp.gun != this){return;}
         if (Input.GetKeyDown(KeyCode.R))
         {
-            var bulletAmount = pB.ReturnTotalBullets(weaponSO.type);
-            if (bulletAmount <= 0) return;
-            reload.Play();
-            int minus;
-            readyToShoot = true;
-            if (bulletAmount < weaponSO.clipAmount)
-            {
-                currentBulletAmount += bulletAmount;
-                bulletAmount = 0;
-            }
-            minus = weaponSO.clipAmount - currentBulletAmount;
-            currentBulletAmount = weaponSO.clipAmount;
-            bulletAmount -= minus;
-            pB.bulletsLeft.text = currentBulletAmount.ToString();
-            pB.totalBullets.text = bulletAmount.ToString();
-            pB.MinusTotalBullets(bulletAmount, weaponSO.type);
+            StartCoroutine(WaitingAfterReload());
         }
-        if (Input.GetKey(KeyCode.Mouse0)&& readyToShoot&& wp.haveGun&& currentBulletAmount > 0) {StartCoroutine(Shooting()); }
+        if (Input.GetKey(KeyCode.Mouse0)&& readyToShoot&& wp.haveGun&& currentBulletAmount > 0&& isReloading == false) {StartCoroutine(Shooting()); }
+    }
+    private IEnumerator WaitingAfterReload() 
+    {
+        var bulletAmount = pB.ReturnTotalBullets(weaponSO.type);
+        if(isReloading||bulletAmount <= 0)yield break;
+        reload.Play();
+        int minus;
+        if (bulletAmount < weaponSO.clipAmount)
+        {
+            currentBulletAmount += bulletAmount;
+            bulletAmount = 0;
+        }
+        minus = weaponSO.clipAmount - currentBulletAmount;
+        currentBulletAmount = weaponSO.clipAmount;
+        bulletAmount -= minus;
+        pB.MinusTotalBullets(bulletAmount, weaponSO.type);
+        isReloading = true;
+        yield return new WaitForSeconds(2);
+        isReloading = false;
+        pB.bulletsLeft.text = currentBulletAmount.ToString();
+        pB.totalBullets.text = bulletAmount.ToString();
+        readyToShoot = true;
     }
     private IEnumerator Shooting()
     { 
