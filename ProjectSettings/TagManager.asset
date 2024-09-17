@@ -17,6 +17,7 @@ TagManager:
   - RPG
   - Coin
   - Ammo
+  - Car
   layers:
   - Default
   - TransparentFX
