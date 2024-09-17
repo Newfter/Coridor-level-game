@@ -6,6 +6,7 @@ public class InstGrenata : MonoBehaviour
     public GameObject grenadePanel;
     [SerializeField] private GameObject instGrenata;
     [SerializeField] private int force;
+    [SerializeField] private Transform spawnTransform;
     public TextMeshProUGUI totalGrenadeLeft;
     private PlayerBullets pB;
     private bool canThrou = true;
@@ -29,8 +30,8 @@ public class InstGrenata : MonoBehaviour
     {
         canThrou = false;
         var grenadeAmount = pB.ReturnTotalBullets(TypeGun.Grenade);
-        GameObject gr = Instantiate(instGrenata, transform.position + Vector3.up, Quaternion.identity);
-        gr.GetComponent<Rigidbody>().AddForce((transform.forward + transform.up) * force);
+        GameObject gr = Instantiate(instGrenata, spawnTransform.position, Quaternion.identity);
+        gr.GetComponent<Rigidbody>().AddForce((spawnTransform.forward) * force);
         grenadeAmount -= 1;
         pB.MinusTotalBullets(grenadeAmount, TypeGun.Grenade);
         totalGrenadeLeft.text = grenadeAmount.ToString();
