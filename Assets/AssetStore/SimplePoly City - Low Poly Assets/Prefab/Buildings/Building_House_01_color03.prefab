@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 9115041735389648420}
   m_Layer: 0
   m_Name: Building_House_01_color03
-  m_TagString: Untagged
+  m_TagString: obsticle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4

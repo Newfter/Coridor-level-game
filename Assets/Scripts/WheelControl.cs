@@ -6,8 +6,7 @@ public class WheelControl : MonoBehaviour
 
     [HideInInspector] public WheelCollider WheelCollider;
     
-    public bool steerable;
-    public bool motorized;
+    public bool steerable, motorized;
 
     Vector3 position;
     Quaternion rotation;
@@ -17,7 +16,7 @@ public class WheelControl : MonoBehaviour
         WheelCollider = GetComponent<WheelCollider>();
     }
     
-    void Update()
+    private void Update()
     {
         WheelCollider.GetWorldPose(out position, out rotation);
         wheelModel.transform.position = position;

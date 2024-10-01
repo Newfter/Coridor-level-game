@@ -1,13 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class WeaponTouch : MonoBehaviour
 {
-    public bool haveGun = false; 
-    [SerializeField] private GameObject bulPanel, weaponButton,  pressT;
+    public bool haveGun; 
+    public GameObject bulPanel, weaponButton,  pressT;
     public Transform instGuns, gunInHand;
     public Gun gun;
     public PlayerBullets pB;

@@ -1,3 +1,4 @@
+using Mono.Cecil.Cil;
 using StarterAssets;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -5,17 +6,20 @@ using UnityEngine.InputSystem;
 public class GoIntoCar : MonoBehaviour
 {
     [SerializeField] private Transform spawnPlayerTransform;
-    [SerializeField] private GameObject carCamera, mainCamera, carPanel, goInText, car;
+    [SerializeField] private GameObject carCamera, mainCamera, carPanel, goInText;
+    public bool _inCar;
 
     private void Start()
     {
+        _inCar = false;
         carCamera.SetActive(false); 
         carPanel.SetActive(false);
         goInText.SetActive(false);
-        car.GetComponent<CarController>().enabled = false;
     }
     private void Update()
     {
+        
+        if(Input.GetKeyDown(KeyCode.F) && _inCar) GoOutOfcar();
         Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f ,0));
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, 5))
@@ -24,7 +28,7 @@ public class GoIntoCar : MonoBehaviour
             if (hitTransform.gameObject.CompareTag("Car"))
             {
                 goInText.SetActive(true);
-                if (Input.GetKeyDown(KeyCode.G))
+                if (Input.GetKeyDown(KeyCode.F)  && !_inCar)
                 {
                     GoIntocar();
                     goInText.SetActive(false);
@@ -49,7 +53,9 @@ public class GoIntoCar : MonoBehaviour
        gameObject.GetComponent<CharacterController>().enabled = false;
        carCamera.SetActive(true); 
        carPanel.SetActive(true);
-       car.GetComponent<CarController>().enabled = true;
+       _inCar = true;
+       FindAnyObjectByType<WeaponTouch>().bulPanel.SetActive(false);
+       FindAnyObjectByType<InstGrenata>().grenadePanel.SetActive(false);
     }
     public void GoOutOfcar()
     {
@@ -65,7 +71,11 @@ public class GoIntoCar : MonoBehaviour
         gameObject.GetComponent<FirstPersonController>().enabled = true;
         gameObject.GetComponent<BasicRigidBodyPush>().enabled = true;
         gameObject.GetComponent<CharacterController>().enabled = true;
-        car.GetComponent<CarController>().enabled = false;
+        if(FindAnyObjectByType<WeaponTouch>().haveGun) { FindAnyObjectByType<WeaponTouch>().bulPanel.SetActive(true); }
+
+        if (FindAnyObjectByType<InstGrenata>().haveGrenade) { FindAnyObjectByType<InstGrenata>().grenadePanel.SetActive(true); }
+        
         gameObject.transform.position = spawnPlayerTransform.position;
+        _inCar = false;
     }
 }

@@ -3,6 +3,7 @@ using TMPro;
 using UnityEngine;
 public class InstGrenata : MonoBehaviour
 {
+    public bool haveGrenade;
     public GameObject grenadePanel;
     [SerializeField] private GameObject instGrenata;
     [SerializeField] private int force;
@@ -19,11 +20,9 @@ public class InstGrenata : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.G)&& canThrou)
-        {
-            var grenadeAmount = pB.ReturnTotalBullets(TypeGun.Grenade);
-            if (grenadeAmount > 0) { StartCoroutine(Throu()); }
-        }
+        var grenadeAmount = pB.ReturnTotalBullets(TypeGun.Grenade);
+        if (grenadeAmount > 0) { haveGrenade = true; }
+        if (Input.GetKeyDown(KeyCode.G)&& canThrou) { if (grenadeAmount > 0) { StartCoroutine(Throu()); } }
     }
 
     private IEnumerator Throu()

@@ -101,7 +101,7 @@ GameObject:
   - component: {fileID: 6265573469074363234}
   m_Layer: 0
   m_Name: Props_Windmill
-  m_TagString: Untagged
+  m_TagString: obsticle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1956281838359729171}
   m_Layer: 0
   m_Name: Building_Residential_color02
-  m_TagString: Untagged
+  m_TagString: obsticle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4

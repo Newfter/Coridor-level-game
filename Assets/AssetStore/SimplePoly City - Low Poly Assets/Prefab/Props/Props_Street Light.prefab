@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5377802036092432900}
   m_Layer: 0
   m_Name: Props_Street Light
-  m_TagString: Untagged
+  m_TagString: obsticle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8366679957200712492}
   m_Layer: 0
   m_Name: Building_Shoes Shop
-  m_TagString: Untagged
+  m_TagString: obsticle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4
