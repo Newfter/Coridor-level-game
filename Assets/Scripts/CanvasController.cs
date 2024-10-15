@@ -19,9 +19,9 @@ public class CanvasController : MonoBehaviour
     public void modeOn() { mode.SetActive(true); click.Play(); }
     public void ModeOff(){ mode.SetActive(false); click.Play();}
     public void Play() { SceneManager.LoadScene("Scenes/SimpleScene"); click.Play();}
-    public void Easy() { PlayerPrefs.SetString("Mode", ZombieCraetion.Mode.Easy.ToString()); click.Play();}
-    public void Medium(){PlayerPrefs.SetString("Mode", ZombieCraetion.Mode.Medium.ToString()); click.Play();}
-    public void Hard() {PlayerPrefs.SetString("Mode", ZombieCraetion.Mode.Hard.ToString()); click.Play();}
+    public void Easy() { PlayerPrefs.SetString("Mode", ZombieCreation.Mode.Easy.ToString()); click.Play();}
+    public void Medium(){PlayerPrefs.SetString("Mode", ZombieCreation.Mode.Medium.ToString()); click.Play();}
+    public void Hard() {PlayerPrefs.SetString("Mode", ZombieCreation.Mode.Hard.ToString()); click.Play();}
     public void Settings() { settings.SetActive(true); click.Play();}
     public void OffSettings() { settings.SetActive(false); click.Play();}
     

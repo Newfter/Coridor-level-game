@@ -1,7 +1,6 @@
 using System.Collections;
 using DefaultNamespace;
 using UnityEngine;
-using TMPro;
 public class Gun : MonoBehaviour
 {
     public WeaponSO weaponSO;
@@ -11,7 +10,7 @@ public class Gun : MonoBehaviour
     public bool readyToShoot;
     private WeaponTouch wp;
     private PlayerBullets pB;
-    private bool isReloading = false;
+    private bool isReloading;
     
     private void Start()
     {

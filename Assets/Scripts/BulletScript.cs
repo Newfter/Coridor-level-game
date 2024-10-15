@@ -4,12 +4,18 @@ public class BulletScript : MonoBehaviour
 {
     private Damageable damageable;
     public WeaponSO weaponSo;
-    public void BulletDamage(GameObject gm,int damage)
+    private void BulletDamage(GameObject gm,int damage)
     {
-        if (gm.TryGetComponent(out damageable)) damageable.TakeDamage(damage);
+        if (gm.TryGetComponent(out damageable))
+        {
+            damageable.TakeDamage(damage);
+        }
         else if( gm.TryGetComponent(out LinkToGm LinkToGM))
         {
-            if (LinkToGM.GameObject.TryGetComponent(out damageable)) damageable.TakeDamage(damage);
+            if (LinkToGM.GameObject.TryGetComponent(out damageable))
+            {
+                damageable.TakeDamage(damage);
+            }
         }
     }
 

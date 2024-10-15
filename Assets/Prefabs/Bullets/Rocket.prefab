@@ -4980,7 +4980,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosion: {fileID: 2596183033238743524}
   explousion: {fileID: 1481138105806575257}
-  wS: {fileID: 0}
+  wS: {fileID: 11400000, guid: 592bed407d30c4242b572292ed647e4f, type: 2}
 --- !u!82 &1481138105806575257
 AudioSource:
   m_ObjectHideFlags: 0

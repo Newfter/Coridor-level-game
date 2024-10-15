@@ -19,6 +19,8 @@ TagManager:
   - Ammo
   - Car
   - obsticle
+  - deadPanel
+  - DamagePanel
   layers:
   - Default
   - TransparentFX
