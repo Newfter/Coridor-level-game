@@ -15,7 +15,7 @@ public class ZombieCreation : MonoBehaviour
     public int pause=25, minus, waitUntilNewZombie = 3, lvl = 1, zombiesOnTheMapInt, zombiesKilled;
     private void Start()
     {
-        mode = Enum.Parse<Mode>(PlayerPrefs.GetString("Mode", Mode.Easy.ToString()));
+       // mode = Enum.Parse<Mode>(PlayerPrefs.GetString("Mode", Mode.Easy.ToString()));
         minus = mode switch
         {
             Mode.Easy => 1,
@@ -41,8 +41,9 @@ public class ZombieCreation : MonoBehaviour
                 if (Vector3.Distance(zombieSpawnTransform.position, player.position) > 50)
                     break;
             }
-        
-            for (int i = 0; i < Random.Range(0, 3); i++) 
+
+            var x = Random.Range(0, 3);
+            for (int i = 0; i <x; i++) 
             {
                 switch (lvl)
                 {
@@ -64,7 +65,6 @@ public class ZombieCreation : MonoBehaviour
             }
             zombiesOnTheMap.text = zombiesOnTheMapInt.ToString();
             yield return new WaitForSeconds(pause);
-            StartCoroutine(InstZombak());
         }
     }
     public enum Mode
