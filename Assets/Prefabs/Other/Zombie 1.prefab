@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 581462584122618548}
   - component: {fileID: 8215782544239020747}
   - component: {fileID: 7135447362354145236}
+  - component: {fileID: 2442148426603120420}
   m_Layer: 0
   m_Name: basic_rig L Calf
   m_TagString: Untagged
@@ -131,6 +132,19 @@ CharacterJoint:
   m_EnablePreprocessing: 0
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!114 &2442148426603120420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5880877123559581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 419e5e7aba2540c41b97c223a6ba8347, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameObject: {fileID: 4283105806363456303}
 --- !u!1 &135873177147151299
 GameObject:
   m_ObjectHideFlags: 0
@@ -143,6 +157,7 @@ GameObject:
   - component: {fileID: 9102625234673718126}
   - component: {fileID: 9218719009973460760}
   - component: {fileID: 2847922179711946015}
+  - component: {fileID: 3609468353314092599}
   m_Layer: 0
   m_Name: basic_rig L Forearm
   m_TagString: Untagged
@@ -262,6 +277,19 @@ CharacterJoint:
   m_EnablePreprocessing: 0
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!114 &3609468353314092599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 135873177147151299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 419e5e7aba2540c41b97c223a6ba8347, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameObject: {fileID: 4283105806363456303}
 --- !u!1 &308199142063813355
 GameObject:
   m_ObjectHideFlags: 0
@@ -513,6 +541,7 @@ GameObject:
   - component: {fileID: 5190350801292984193}
   - component: {fileID: 634933726552644847}
   - component: {fileID: 5602694249465708018}
+  - component: {fileID: 3150684008915231085}
   m_Layer: 0
   m_Name: basic_rig Head
   m_TagString: Untagged
@@ -629,6 +658,19 @@ CharacterJoint:
   m_EnablePreprocessing: 0
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!114 &3150684008915231085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1342550670603619456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 419e5e7aba2540c41b97c223a6ba8347, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameObject: {fileID: 4283105806363456303}
 --- !u!1 &1625346934017102102
 GameObject:
   m_ObjectHideFlags: 0
@@ -1039,6 +1081,7 @@ GameObject:
   - component: {fileID: 6761149189383623053}
   - component: {fileID: 2635138202330238370}
   - component: {fileID: 4446370067194543558}
+  - component: {fileID: 913438326252063738}
   m_Layer: 0
   m_Name: basic_rig L Thigh
   m_TagString: Untagged
@@ -1158,6 +1201,19 @@ CharacterJoint:
   m_EnablePreprocessing: 0
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!114 &913438326252063738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3210818423153704239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 419e5e7aba2540c41b97c223a6ba8347, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameObject: {fileID: 4283105806363456303}
 --- !u!1 &3893624128151202000
 GameObject:
   m_ObjectHideFlags: 0
@@ -1324,7 +1380,7 @@ MonoBehaviour:
   zombieWalking: {fileID: 1663955282413150}
   zombieHitting: {fileID: 31933322694757991}
   isDamaged: {fileID: 4348351309696788121}
-  playerDist: 50
+  playerDist: 70
   hittingDist: 2
   agent: {fileID: 0}
   anim: {fileID: 0}
@@ -1986,6 +2042,7 @@ GameObject:
   - component: {fileID: 2301906201579650014}
   - component: {fileID: 4969946029954533257}
   - component: {fileID: 1957833892898649533}
+  - component: {fileID: 8450782446400148501}
   m_Layer: 0
   m_Name: basic_rig R Thigh
   m_TagString: Untagged
@@ -2105,6 +2162,19 @@ CharacterJoint:
   m_EnablePreprocessing: 0
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!114 &8450782446400148501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4564020821621934383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 419e5e7aba2540c41b97c223a6ba8347, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameObject: {fileID: 4283105806363456303}
 --- !u!1 &5578482887905582043
 GameObject:
   m_ObjectHideFlags: 0
@@ -2274,6 +2344,7 @@ GameObject:
   - component: {fileID: 1275815650182042606}
   - component: {fileID: 6062411920398875999}
   - component: {fileID: 3506763014574080249}
+  - component: {fileID: 4853203202136470934}
   m_Layer: 0
   m_Name: basic_rig R Forearm
   m_TagString: Untagged
@@ -2393,6 +2464,19 @@ CharacterJoint:
   m_EnablePreprocessing: 0
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!114 &4853203202136470934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6886845922511030427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 419e5e7aba2540c41b97c223a6ba8347, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameObject: {fileID: 4283105806363456303}
 --- !u!1 &7123448010358525993
 GameObject:
   m_ObjectHideFlags: 0
@@ -2503,6 +2587,7 @@ GameObject:
   - component: {fileID: 4432038978708365696}
   - component: {fileID: 7388115703745698113}
   - component: {fileID: 149413313055139774}
+  - component: {fileID: 6328119911859419044}
   m_Layer: 0
   m_Name: basic_rig L UpperArm
   m_TagString: Untagged
@@ -2622,6 +2707,19 @@ CharacterJoint:
   m_EnablePreprocessing: 0
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!114 &6328119911859419044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7865558263575782725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 419e5e7aba2540c41b97c223a6ba8347, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameObject: {fileID: 4283105806363456303}
 --- !u!1 &8158634745794804966
 GameObject:
   m_ObjectHideFlags: 0
@@ -2634,6 +2732,7 @@ GameObject:
   - component: {fileID: 7179506696461819603}
   - component: {fileID: 6501801556291088342}
   - component: {fileID: 3801403197943914460}
+  - component: {fileID: 4015507956632147640}
   m_Layer: 0
   m_Name: basic_rig UpperArm
   m_TagString: Untagged
@@ -2753,6 +2852,19 @@ CharacterJoint:
   m_EnablePreprocessing: 0
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!114 &4015507956632147640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8158634745794804966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 419e5e7aba2540c41b97c223a6ba8347, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameObject: {fileID: 4283105806363456303}
 --- !u!1 &8192193066366490440
 GameObject:
   m_ObjectHideFlags: 0
@@ -2764,6 +2876,7 @@ GameObject:
   - component: {fileID: 3281907206917126129}
   - component: {fileID: 1437332207653351462}
   - component: {fileID: 9076167945554354072}
+  - component: {fileID: 3161318244236985012}
   m_Layer: 0
   m_Name: basic_rig Pelvis
   m_TagString: Zombie
@@ -2837,6 +2950,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &3161318244236985012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8192193066366490440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 419e5e7aba2540c41b97c223a6ba8347, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameObject: {fileID: 4283105806363456303}
 --- !u!1 &8203161744799878233
 GameObject:
   m_ObjectHideFlags: 0
@@ -2849,6 +2975,7 @@ GameObject:
   - component: {fileID: 8795549094754104914}
   - component: {fileID: 4344915695198933528}
   - component: {fileID: 1565824160138213636}
+  - component: {fileID: 6640068178482323988}
   m_Layer: 0
   m_Name: basic_rig R Calf
   m_TagString: Untagged
@@ -2968,6 +3095,19 @@ CharacterJoint:
   m_EnablePreprocessing: 0
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!114 &6640068178482323988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8203161744799878233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 419e5e7aba2540c41b97c223a6ba8347, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameObject: {fileID: 4283105806363456303}
 --- !u!1 &8276675950281837294
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 public class GoIntoCar : MonoBehaviour
 {
     [SerializeField] private Transform spawnPlayerTransform;
-    [SerializeField] private GameObject carCamera, mainCamera, carPanel, goInText;
+    [SerializeField] private GameObject carCamera, mainCamera, carPanel, goInText, zKT;
     public bool _inCar;
 
     private void Start()
@@ -55,6 +55,7 @@ public class GoIntoCar : MonoBehaviour
        _inCar = true;
        FindAnyObjectByType<WeaponTouch>().bulPanel.SetActive(false);
        FindAnyObjectByType<InstGrenata>().grenadePanel.SetActive(false);
+       zKT.SetActive(false);
     }
     public void GoOutOfcar()
     {
@@ -71,7 +72,7 @@ public class GoIntoCar : MonoBehaviour
         gameObject.GetComponent<BasicRigidBodyPush>().enabled = true;
         gameObject.GetComponent<CharacterController>().enabled = true;
         if(FindAnyObjectByType<WeaponTouch>().haveGun) { FindAnyObjectByType<WeaponTouch>().bulPanel.SetActive(true); }
-
+        zKT.SetActive(true);
         if (FindAnyObjectByType<InstGrenata>().haveGrenade) { FindAnyObjectByType<InstGrenata>().grenadePanel.SetActive(true); }
         
         gameObject.transform.position = spawnPlayerTransform.position;

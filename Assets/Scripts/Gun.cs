@@ -18,6 +18,7 @@ public class Gun : MonoBehaviour
         wp = FindAnyObjectByType<WeaponTouch>();
         currentBulletAmount = weaponSO.clipAmount;
         readyToShoot = false;
+        
     }
 
     public void EnableGun()
@@ -62,8 +63,10 @@ public class Gun : MonoBehaviour
         RaycastHit hit;
         Vector3 angle;
         if (Physics.Raycast(ray, out hit, 1000)) {angle = (hit.point - bulletThrou.position).normalized;}
-        else { angle = transform.forward; }    
+        else { angle = transform.forward; }  
+        
         GameObject bulletInGame = Instantiate(weaponSO.bullet, bulletThrou.position, bulletThrou.rotation);
+        Physics.IgnoreCollision(bulletInGame.GetComponent<Collider>(), gameObject.GetComponent<Collider>());
         var r = bulletInGame.GetComponent<Rigidbody>();
         if (bulletInGame.TryGetComponent(out BulletScript bulletScript)) { bulletScript.weaponSo = weaponSO; }
         if (bulletInGame.TryGetComponent(out RcketScript rcketScript)) { rcketScript.wS = weaponSO;}
@@ -71,7 +74,7 @@ public class Gun : MonoBehaviour
         r.AddForce(angle * weaponSO.forceOfGun);
         shoot.Play();
         readyToShoot = false;
-        currentBulletAmount = currentBulletAmount - 1;
+        currentBulletAmount -= 1;
         
         yield return new WaitForSeconds(weaponSO.speed);
         readyToShoot = currentBulletAmount > 0;

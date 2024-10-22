@@ -1,9 +1,12 @@
+using System;
 using DefaultNamespace;
 using UnityEngine;
 public class BulletScript : MonoBehaviour
 {
+    [SerializeField] private GameObject gun;
     private Damageable damageable;
     public WeaponSO weaponSo;
+
     private void BulletDamage(GameObject gm,int damage)
     {
         if (gm.TryGetComponent(out damageable))

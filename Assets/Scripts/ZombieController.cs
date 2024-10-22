@@ -27,6 +27,7 @@ public class WalkingToPlayer : MonoBehaviour
         if (wT.enabled&&cC is not null) {playerTransform = cC.playerTransform;}
         if (!wT.enabled&& playerTransform != carTransform) { playerTransform = carTransform;}
         float dist = Vector3.Distance(transform.position, playerTransform.position);
+        if(dist > playerDist)return;
         if (dist < hittingDist&& !isHitting) { 
             StartCoroutine(Damage());
             agent.ResetPath();
@@ -40,6 +41,8 @@ public class WalkingToPlayer : MonoBehaviour
             agent.ResetPath();
         }
     }
+
+    private void Optimisation() { }
 
     private IEnumerator Damage()
     {

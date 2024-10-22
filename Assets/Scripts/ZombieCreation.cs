@@ -12,7 +12,7 @@ public class ZombieCreation : MonoBehaviour
     [SerializeField] private Transform[] spawnPoints;
     public TextMeshProUGUI zombiesOnTheMap, zombiesKilledText;
     private CanvasController cC;
-    public int pause=25, minus, waitUntilNewZombie = 4, lvl = 1, zombiesOnTheMapInt, zombiesKilled;
+    public int pause=25, minus, waitUntilNewZombie = 3, lvl = 1, zombiesOnTheMapInt, zombiesKilled;
     private void Start()
     {
         mode = Enum.Parse<Mode>(PlayerPrefs.GetString("Mode", Mode.Easy.ToString()));
@@ -28,6 +28,7 @@ public class ZombieCreation : MonoBehaviour
         StartCoroutine(InstZombak());
         StartCoroutine(BossSpawn());
     }
+
     private IEnumerator InstZombak()
     {
         while (true)
@@ -75,8 +76,7 @@ public class ZombieCreation : MonoBehaviour
 
     private IEnumerator IncreasingDificulty()
     {
-        if (pause - minus < 1) yield break;
-        pause -= minus;
+        if (pause - minus > 5) { pause -= minus; }
         waitUntilNewZombie -= 1;
         if (waitUntilNewZombie <= 0 && lvl != 4)
         {

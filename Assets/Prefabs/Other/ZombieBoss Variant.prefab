@@ -74,7 +74,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5232664801864450815, guid: 3f1ed616bb8ae59489197f3096eea0d5, type: 3}
       propertyPath: playerDist
-      value: 100
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 5427272967138924542, guid: 3f1ed616bb8ae59489197f3096eea0d5, type: 3}
       propertyPath: hp
