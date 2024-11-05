@@ -30,7 +30,7 @@ public class WeaponTouch : MonoBehaviour
     {
         Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f ,0));
         RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, 100))
+        if (Physics.Raycast(ray, out hit, 10))
         {
             var hitTransform = hit.collider.transform;
             if (hitTransform.gameObject.CompareTag("Gun")) PointAtGun(hitTransform);

@@ -21,6 +21,7 @@ TagManager:
   - obsticle
   - deadPanel
   - DamagePanel
+  - stick
   layers:
   - Default
   - TransparentFX

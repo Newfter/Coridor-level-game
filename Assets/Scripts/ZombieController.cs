@@ -56,4 +56,5 @@ public class WalkingToPlayer : MonoBehaviour
         anim.SetBool("isHitting", false);
         isHitting = false;
     }
+    
 }

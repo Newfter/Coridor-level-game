@@ -1,15 +1,11 @@
 using UnityEngine;
 public class Coin : MonoBehaviour
 {
-    private void Start()
-    {
-        if(PlayerPrefs.GetInt("coinsInt") == 0) PlayerPrefs.SetInt("coinsInt", 0);
-    }
+    [SerializeField] private AudioClip _audioClip;
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Coin"))
-        {
-            PlayerPrefs.SetInt("coinsInt", PlayerPrefs.GetInt("coinsInt") + 1);
-        }
+        if (!other.gameObject.CompareTag("Player")) return;
+        FindAnyObjectByType<AudioController>().Audio(_audioClip, transform.position);
+        Destroy(gameObject);
     }
 }
