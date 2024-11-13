@@ -1,38 +1,24 @@
 using System.Collections;
+using Unity.Mathematics;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class CoinController : MonoBehaviour
 {
-    [SerializeField] private GameObject coin;
-    [SerializeField] private Transform[] spawnPoints;
-    [SerializeField] private bool[] isSpawned;
-    private int pause = 60;
-    void Start()
+    [HideInInspector] public int coinsAmount, diamondAmount;
+    [SerializeField] private GameObject coin, diamond;
+    private void Start()
     {
-        
-    }
-    
-    void Update()
-    {
-        
+        coinsAmount = PlayerPrefs.GetInt("CoinsAmount");
     }
 
-    private IEnumerator CoinSpawn()
+    public void CoinSpawn(Vector3 spawn)
     {
-        while (true)
-        {
-            
-            while (true)
-            {
-                yield return null;
-                
-                    break;
-            }
-            
-            
-            
-            yield return new WaitForSeconds(pause);
-        }
-        
+        var random = Random.Range(0, 100);
+        print(random);
+        if (random < 40)
+            Instantiate(coin, spawn, Quaternion.identity);
+        else if (random < 45) 
+            Instantiate(diamond, spawn, Quaternion.identity);
     }
 }

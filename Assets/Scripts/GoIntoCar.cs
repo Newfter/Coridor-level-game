@@ -42,7 +42,6 @@ public class GoIntoCar : MonoBehaviour
     {
        mainCamera.SetActive(false);
        gameObject.GetComponent<WeaponTouch>().enabled = false;
-       gameObject.GetComponent<Coin>().enabled = false;
        gameObject.GetComponent<PlayerBullets>().enabled = false;
        gameObject.GetComponent<InstGrenata>().enabled = false;
        gameObject.GetComponent<PlayerInput>().enabled = false;
@@ -63,7 +62,6 @@ public class GoIntoCar : MonoBehaviour
         carCamera.SetActive(false); 
         carPanel.SetActive(false);
         gameObject.GetComponent<WeaponTouch>().enabled = true;
-        gameObject.GetComponent<Coin>().enabled = true;
         gameObject.GetComponent<PlayerBullets>().enabled = true;
         gameObject.GetComponent<InstGrenata>().enabled = true;
         gameObject.GetComponent<PlayerInput>().enabled = true;

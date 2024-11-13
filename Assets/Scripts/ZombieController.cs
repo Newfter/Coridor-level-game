@@ -41,9 +41,6 @@ public class WalkingToPlayer : MonoBehaviour
             agent.ResetPath();
         }
     }
-
-    private void Optimisation() { }
-
     private IEnumerator Damage()
     {
         isHitting = true;

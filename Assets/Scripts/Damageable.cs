@@ -11,14 +11,20 @@ public class Damageable : MonoBehaviour
     public List<Rigidbody> rigidList;
     private Slider zombieHp;
     private ZombieCreation zC;
+    private Transform player;
+    private CoinController _coinController;
 
     private void Start()
     {
+        _coinController = FindFirstObjectByType<CoinController>();
+        player = FindAnyObjectByType<WeaponTouch>().gameObject.transform;
         zC = FindAnyObjectByType<ZombieCreation>();
         zombieHp = GetComponentInChildren<Slider>();
         zombieHp.maxValue = hp;
         zombieHp.value = hp;
         damageText.gameObject.SetActive(false);
+        //Quaternion.Euler()  from vec3 to quat
+        //transform.rotation.euler from quat to vec3
     }
     public void TakeDamage(int damage)
     {
@@ -27,6 +33,7 @@ public class Damageable : MonoBehaviour
         StartCoroutine(DamageText(damage));
         if (hp <= 0)
         {
+            _coinController.CoinSpawn(gameObject.transform.position);
             zC.zombiesKilled += 1;
             zC.zombiesKilledText.text = zC.zombiesKilled.ToString();
             zombieHp.gameObject.SetActive(false);
@@ -40,14 +47,25 @@ public class Damageable : MonoBehaviour
                 i.useGravity = true;
                 i.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
             }
+
             Destroy(gameObject, 100);
+            enabled = false;
         }
     }
 
     private IEnumerator DamageText(int damage)
     {
+        
         damageText.gameObject.SetActive(true);
+        damageText.transform.LookAt(player);
+        var rot = damageText.transform.rotation.eulerAngles;
+        rot.y = 180;
+        
+        damageText.transform.rotation = Quaternion.Euler(rot);
+        
         damageText.text = damage.ToString();
+        
+        
         yield return new WaitForSeconds(0.5f);
         damageText.gameObject.SetActive(false);
     }

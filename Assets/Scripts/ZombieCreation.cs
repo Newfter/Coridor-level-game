@@ -33,14 +33,17 @@ public class ZombieCreation : MonoBehaviour
     {
         while (true)
         {
-            Transform zombieSpawnTransform;
-            while (true)
+            Vector3 zombieSpawnPosition = Vector3.zero;
+            var minDistance = float.MaxValue;
+            foreach (var i in spawnPoints) 
             {
-                yield return null;
-                zombieSpawnTransform = spawnPoints[Random.Range(0, spawnPoints.Length)];
-                if (Vector3.Distance(zombieSpawnTransform.position, player.position) > 50)
-                    break;
+                if (minDistance > Vector3.Distance(i.position, player.position) && Vector3.Distance(i.position, player.position) > 50)
+                {
+                    minDistance = Vector3.Distance(i.position, player.position);
+                    zombieSpawnPosition = i.position;
+                }
             }
+            
 
             var x = Random.Range(0, 3);
             for (int i = 0; i <x; i++) 
@@ -48,16 +51,16 @@ public class ZombieCreation : MonoBehaviour
                 switch (lvl)
                 {
                     case 1:
-                        Instantiate(zombak, zombieSpawnTransform.position, Quaternion.identity);
+                        Instantiate(zombak, zombieSpawnPosition, Quaternion.identity);
                         break;
                     case 2:
-                        Instantiate(lvl2Zombak, zombieSpawnTransform.position, Quaternion.identity);
+                        Instantiate(lvl2Zombak, zombieSpawnPosition, Quaternion.identity);
                         break;
                     case 3:
-                        Instantiate(lvl3Zombak, zombieSpawnTransform.position, Quaternion.identity);
+                        Instantiate(lvl3Zombak, zombieSpawnPosition, Quaternion.identity);
                         break;
                     case 4:
-                        Instantiate(lvl4Zombak, zombieSpawnTransform.position, Quaternion.identity);
+                        Instantiate(lvl4Zombak, zombieSpawnPosition, Quaternion.identity);
                         break;
                 }
 
@@ -89,16 +92,16 @@ public class ZombieCreation : MonoBehaviour
 
     private IEnumerator BossSpawn()
     {
-        Transform zombieSpawnTransform;
+        Vector3 zombieSpawnPosition;
         while (true)
         {
             yield return null;
-            zombieSpawnTransform = spawnPoints[Random.Range(0, spawnPoints.Length)];
-            if (Vector3.Distance(zombieSpawnTransform.position, player.position) > 50)
+            zombieSpawnPosition = spawnPoints[Random.Range(0, spawnPoints.Length)].position;
+            if (Vector3.Distance( zombieSpawnPosition, player.position) > 50)
                 break;
         }
         yield return new WaitForSeconds(120);
-        Instantiate(zombieBoss, zombieSpawnTransform. position, Quaternion.identity);
+        Instantiate(zombieBoss,  zombieSpawnPosition, Quaternion.identity);
         StartCoroutine(BossSpawn());
     }
 }
