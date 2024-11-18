@@ -1,10 +1,11 @@
-using System.Collections;
-using Unity.Mathematics;
+using System;
+using TMPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class CoinController : MonoBehaviour
 {
+    public TextMeshProUGUI diamondText, coinText;
     [HideInInspector] public int coinsAmount, diamondAmount;
     [SerializeField] private GameObject coin, diamond;
     private void Start()

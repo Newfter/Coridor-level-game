@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -9,34 +8,37 @@ public class Damageable : MonoBehaviour
     [SerializeField] private TextMeshPro damageText;
     public int hp, zombiesKilled;
     public List<Rigidbody> rigidList;
-    private Slider zombieHp;
-    private ZombieCreation zC;
-    private Transform player;
+    private Slider _zombieHp;
+    private ZombieCreation _zC;
+    private Transform _player;
     private CoinController _coinController;
+    private bool _isKilled;
 
     private void Start()
     {
         _coinController = FindFirstObjectByType<CoinController>();
-        player = FindAnyObjectByType<WeaponTouch>().gameObject.transform;
-        zC = FindAnyObjectByType<ZombieCreation>();
-        zombieHp = GetComponentInChildren<Slider>();
-        zombieHp.maxValue = hp;
-        zombieHp.value = hp;
+        _player = FindAnyObjectByType<WeaponTouch>().gameObject.transform;
+        _zC = FindAnyObjectByType<ZombieCreation>();
+        _zombieHp = GetComponentInChildren<Slider>();
+        _zombieHp.maxValue = hp;
+        _zombieHp.value = hp;
         damageText.gameObject.SetActive(false);
         //Quaternion.Euler()  from vec3 to quat
         //transform.rotation.euler from quat to vec3
     }
     public void TakeDamage(int damage)
     {
+        if (_isKilled) { return; }
         hp -= damage;
-        zombieHp.value = hp;
+        _zombieHp.value = hp;
         StartCoroutine(DamageText(damage));
         if (hp <= 0)
         {
+            _isKilled = true;
             _coinController.CoinSpawn(gameObject.transform.position);
-            zC.zombiesKilled += 1;
-            zC.zombiesKilledText.text = zC.zombiesKilled.ToString();
-            zombieHp.gameObject.SetActive(false);
+            _zC.zombiesKilled += 1;
+            _zC.zombiesKilledText.text = _zC.zombiesKilled.ToString();
+            _zombieHp.gameObject.SetActive(false);
             zombiesKilled += 1;
             var wtp = GetComponent<WalkingToPlayer>();
             wtp.agent.enabled = false;
@@ -49,7 +51,6 @@ public class Damageable : MonoBehaviour
             }
 
             Destroy(gameObject, 100);
-            enabled = false;
         }
     }
 
@@ -57,7 +58,7 @@ public class Damageable : MonoBehaviour
     {
         
         damageText.gameObject.SetActive(true);
-        damageText.transform.LookAt(player);
+        damageText.transform.LookAt(_player);
         var rot = damageText.transform.rotation.eulerAngles;
         rot.y = 180;
         
