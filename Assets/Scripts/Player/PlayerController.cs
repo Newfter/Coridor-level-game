@@ -13,10 +13,10 @@ public class PlayerController : MonoBehaviour
         StartCoroutine(Healing());
     }
 
-    public void Damage() { StartCoroutine(PlayerDamage());}
-    private IEnumerator PlayerDamage()
+    public void Damage(int damageAmount) { StartCoroutine(PlayerDamage(damageAmount));}
+    private IEnumerator PlayerDamage(int damageAmount)
     {
-        hp -= 1;
+        hp -= damageAmount;
         _damagePanel.SetActive(true);
         if (hp <= 0)
         {

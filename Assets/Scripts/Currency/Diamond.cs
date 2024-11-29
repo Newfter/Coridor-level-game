@@ -1,5 +1,6 @@
 using UnityEngine;
-public class Coin : MonoBehaviour
+
+public class Diamond : MonoBehaviour
 {
     [SerializeField] private AudioClip _audioClip;
     private CoinController cC;
@@ -7,9 +8,7 @@ public class Coin : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (!other.gameObject.CompareTag("Player")) return;
-        cC.coinsAmount += 1;
-        
-        PlayerPrefs.SetInt("CoinsAmount", PlayerPrefs.GetInt("CoinsAmount") + 1);
+        cC.PlusDiamonds();
         FindAnyObjectByType<AudioController>().Audio(_audioClip, transform.position);
         Destroy(gameObject);
     }

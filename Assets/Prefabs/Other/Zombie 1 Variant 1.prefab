@@ -73,6 +73,10 @@ PrefabInstance:
       value: Zombie 1 Variant 1
       objectReference: {fileID: 0}
     - target: {fileID: 5232664801864450815, guid: 3f1ed616bb8ae59489197f3096eea0d5, type: 3}
+      propertyPath: damage
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232664801864450815, guid: 3f1ed616bb8ae59489197f3096eea0d5, type: 3}
       propertyPath: playerDist
       value: 90
       objectReference: {fileID: 0}

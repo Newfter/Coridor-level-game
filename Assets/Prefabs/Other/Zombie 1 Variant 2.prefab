@@ -88,6 +88,10 @@ PrefabInstance:
       propertyPath: zombieHp
       value: 
       objectReference: {fileID: 4823783591685111115}
+    - target: {fileID: 5427272967138924542, guid: 3f1ed616bb8ae59489197f3096eea0d5, type: 3}
+      propertyPath: zombiesKilled
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 7197470167177669763, guid: 3f1ed616bb8ae59489197f3096eea0d5, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0

@@ -21,7 +21,7 @@ public class Stick : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f ,0));
         RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, 1))
+        if (Physics.Raycast(ray, out hit, 2))
         {
             var hitTransform = hit.collider.transform;
             if (hitTransform.CompareTag("Zombie"))
@@ -30,6 +30,7 @@ public class Stick : MonoBehaviour
                 {
                     damageable.TakeDamage(StickBaseDamage);
                 }
+                
                 else if( hitTransform.gameObject.TryGetComponent(out LinkToGm LinkToGM))
                 {
                     if (LinkToGM.GameObject.TryGetComponent(out damageable))

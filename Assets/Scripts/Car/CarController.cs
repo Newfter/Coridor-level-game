@@ -1,21 +1,24 @@
 using System;
 using TMPro;
 using UnityEngine;
-
 public class CarController : MonoBehaviour
 {
     [SerializeField] private Transform centerOfMass;
     [SerializeField] private TextMeshProUGUI carSpeedText;
-    [SerializeField] private ParticleSystem pS;
+    [SerializeField] private ParticleSystem smokeParticleSystem;
     [SerializeField] private AudioSource driving, bumping;
+    public Transform spawn;
+    public GameObject camera, carAfterExplousion;
     public float motorTorque, brakeTorque, maxSpeed, steeringRange, steeringRangeAtMaxSpeed;
-    public Transform playerTransform;
     private GoIntoCar gic;
+    public bool playerInCar;
+    private int carHp = 2;
 
     WheelControl[] wheels;
     Rigidbody rigidBody;
     private void Start()
     {
+        camera.SetActive(false);
         gic = FindAnyObjectByType<GoIntoCar>();
         rigidBody = GetComponent<Rigidbody>();
         
@@ -28,8 +31,9 @@ public class CarController : MonoBehaviour
     
     private void Update()
     {
+        
 
-        if (!gic._inCar)
+        if (!playerInCar)
         {
             foreach (var wheel in wheels) { wheel.WheelCollider.brakeTorque = brakeTorque; }
 
@@ -45,7 +49,7 @@ public class CarController : MonoBehaviour
         driving.volume = Mathf.InverseLerp(0, maxSpeed,  Mathf.Abs(forwardSpeed));
         if (driving.volume < 0.2f) driving.volume = 0.2f;
         bumping.volume = Mathf.InverseLerp(0.7f, maxSpeed,  Mathf.Abs(forwardSpeed))* 2;
-        var m = pS.main;
+        var m = smokeParticleSystem.main;
         m.startLifetime = (Mathf.InverseLerp(0, maxSpeed,  Mathf.Abs(forwardSpeed))+ 1) *4;
         m.startSpeed = (Mathf.InverseLerp(0, maxSpeed,  Mathf.Abs(forwardSpeed)) + 1) * 6 ;
 
@@ -72,10 +76,17 @@ public class CarController : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.CompareTag("obsticle"))
-        {
-            print(other.gameObject.name);
-            bumping.Play();
-        }
+        if (!other.gameObject.CompareTag("obsticle")) return;
+        print(other.gameObject.name);
+        bumping.Play();
+    }
+
+    public void Damage(int damageAmount)
+    {
+        carHp -= damageAmount;
+        if (carHp > 0) return;
+        gic.GoOutOfcar();
+        Instantiate(carAfterExplousion, transform.position, transform.rotation);
+        Destroy(gameObject);
     }
 }

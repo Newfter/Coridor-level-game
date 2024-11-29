@@ -1,28 +1,30 @@
+using JetBrains.Annotations;
 using UnityEngine;
 
 public class WeaponTouch : MonoBehaviour
 {
     public bool haveGun; 
-    public GameObject bulPanel, weaponButton,  pressT;
+    [NotNull] public GameObject bulletPanel, press1ToTakeGun,  pressEToTakeAmmo;
     public Transform instGuns, gunInHand;
     public Gun gun;
     public PlayerBullets pB;
     private void Start()
     {
         pB = FindAnyObjectByType<PlayerBullets>();
-        weaponButton.SetActive(true);
-        pressT.SetActive(false);
+        press1ToTakeGun.SetActive(false);
+        pressEToTakeAmmo.SetActive(false);
+        bulletPanel.SetActive(false);
     }
     
     private void Update()
     {
-        bulPanel.SetActive(false);
-        if(haveGun) bulPanel.SetActive(true);
+        bulletPanel.SetActive(false);
+        if(haveGun) bulletPanel.SetActive(true);
         Raycast();
         if (Input.GetKeyDown(KeyCode.Q))
         {
             DropWeapon();
-            pressT.SetActive(false);
+            pressEToTakeAmmo.SetActive(false);
         }
     } 
     
@@ -34,10 +36,10 @@ public class WeaponTouch : MonoBehaviour
         {
             var hitTransform = hit.collider.transform;
             if (hitTransform.gameObject.CompareTag("Gun")) PointAtGun(hitTransform);
-            else weaponButton.SetActive(false);
+            else press1ToTakeGun.SetActive(false);
             if (hitTransform.gameObject.CompareTag("Ammo"))
             {
-                pressT.SetActive(true);
+                pressEToTakeAmmo.SetActive(true);
                 if (Input.GetKeyDown(KeyCode.E))
                 {
                     if (hitTransform.gameObject.TryGetComponent(out AmmoController ammoController))
@@ -47,14 +49,14 @@ public class WeaponTouch : MonoBehaviour
                     Destroy(hitTransform.gameObject);
                 }
             }
-            else{pressT.SetActive(false);}
+            else{pressEToTakeAmmo.SetActive(false);}
         }
 
     }
 
     private void PointAtGun(Transform hitTransform)
     {
-        weaponButton.SetActive(true);
+        press1ToTakeGun.SetActive(true);
         if (!Input.GetKeyDown(KeyCode.Alpha1)) return;
         gun = hitTransform.gameObject.GetComponent<Gun>();
         gun.EnableGun();

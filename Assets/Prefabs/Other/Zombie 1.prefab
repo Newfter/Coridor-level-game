@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2442148426603120420}
   m_Layer: 0
   m_Name: basic_rig L Calf
-  m_TagString: Untagged
+  m_TagString: Zombie
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -160,7 +160,7 @@ GameObject:
   - component: {fileID: 3609468353314092599}
   m_Layer: 0
   m_Name: basic_rig L Forearm
-  m_TagString: Untagged
+  m_TagString: Zombie
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -544,7 +544,7 @@ GameObject:
   - component: {fileID: 3150684008915231085}
   m_Layer: 0
   m_Name: basic_rig Head
-  m_TagString: Untagged
+  m_TagString: Zombie
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1084,7 +1084,7 @@ GameObject:
   - component: {fileID: 913438326252063738}
   m_Layer: 0
   m_Name: basic_rig L Thigh
-  m_TagString: Untagged
+  m_TagString: Zombie
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1375,13 +1375,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10145a746be40474e9e56fa9d511f8ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerTransform: {fileID: 0}
-  carTransform: {fileID: 0}
   zombieWalking: {fileID: 1663955282413150}
   zombieHitting: {fileID: 31933322694757991}
   isDamaged: {fileID: 4348351309696788121}
   playerDist: 70
   hittingDist: 2
+  damage: 1
   agent: {fileID: 0}
   anim: {fileID: 0}
 --- !u!114 &5427272967138924542
@@ -1833,7 +1832,7 @@ GameObject:
   - component: {fileID: 6916256620598462408}
   m_Layer: 0
   m_Name: basic_rig Spine1
-  m_TagString: Untagged
+  m_TagString: Zombie
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2045,7 +2044,7 @@ GameObject:
   - component: {fileID: 8450782446400148501}
   m_Layer: 0
   m_Name: basic_rig R Thigh
-  m_TagString: Untagged
+  m_TagString: Zombie
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2347,7 +2346,7 @@ GameObject:
   - component: {fileID: 4853203202136470934}
   m_Layer: 0
   m_Name: basic_rig R Forearm
-  m_TagString: Untagged
+  m_TagString: Zombie
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2590,7 +2589,7 @@ GameObject:
   - component: {fileID: 6328119911859419044}
   m_Layer: 0
   m_Name: basic_rig L UpperArm
-  m_TagString: Untagged
+  m_TagString: Zombie
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2735,7 +2734,7 @@ GameObject:
   - component: {fileID: 4015507956632147640}
   m_Layer: 0
   m_Name: basic_rig UpperArm
-  m_TagString: Untagged
+  m_TagString: Zombie
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2978,7 +2977,7 @@ GameObject:
   - component: {fileID: 6640068178482323988}
   m_Layer: 0
   m_Name: basic_rig R Calf
-  m_TagString: Untagged
+  m_TagString: Zombie
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

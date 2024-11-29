@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
-
 public class Clock : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI clockText;
@@ -15,5 +14,4 @@ public class Clock : MonoBehaviour
         clockText.text = "" + seconds / 60 + " : " + seconds % 60;
         StartCoroutine(ClockVoid());
     }
-
 }
