@@ -77520,7 +77520,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damagePanel: {fileID: 1878044612}
   _deadPanel: {fileID: 1771168421}
-  hp: 1000000
+  hp: 10
 --- !u!4 &7546363214572563239
 Transform:
   m_ObjectHideFlags: 0
