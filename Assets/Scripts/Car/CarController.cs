@@ -12,7 +12,7 @@ public class CarController : MonoBehaviour
     public float motorTorque, brakeTorque, maxSpeed, steeringRange, steeringRangeAtMaxSpeed;
     private GoIntoCar gic;
     public bool playerInCar;
-    private int carHp = 2;
+    private int carHp = 200;
 
     WheelControl[] wheels;
     Rigidbody rigidBody;
