@@ -23,7 +23,6 @@ public class ZombieCreation : MonoBehaviour
             Mode.Hard => 3,
             _ => throw new ArgumentOutOfRangeException()
         };
-        zombiesOnTheMap.text = zombiesOnTheMapInt.ToString();
         StartCoroutine(IncreasingDificulty());
         StartCoroutine(InstZombak());
         StartCoroutine(BossSpawn());
@@ -63,10 +62,7 @@ public class ZombieCreation : MonoBehaviour
                         Instantiate(lvl4Zombak, zombieSpawnPosition, Quaternion.identity);
                         break;
                 }
-
-                zombiesOnTheMapInt += 1;
             }
-            zombiesOnTheMap.text = zombiesOnTheMapInt.ToString();
             yield return new WaitForSeconds(pause);
         }
     }

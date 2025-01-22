@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Damageable : MonoBehaviour
 {
     [SerializeField] private TextMeshPro damageText;
-    public int hp, zombiesKilled;
+    public int hp;
     public List<Rigidbody> rigidList;
     private Slider _zombieHp;
     private ZombieCreation _zC;
@@ -39,7 +39,6 @@ public class Damageable : MonoBehaviour
             _zC.zombiesKilled += 1;
             _zC.zombiesKilledText.text = _zC.zombiesKilled.ToString();
             _zombieHp.gameObject.SetActive(false);
-            zombiesKilled += 1;
             var wtp = GetComponent<WalkingToPlayer>();
             wtp.agent.enabled = false;
             wtp.anim.enabled = false;

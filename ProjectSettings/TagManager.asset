@@ -22,6 +22,7 @@ TagManager:
   - deadPanel
   - DamagePanel
   - stick
+  - Potion
   layers:
   - Default
   - TransparentFX

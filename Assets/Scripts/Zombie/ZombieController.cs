@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
@@ -55,6 +56,12 @@ public class WalkingToPlayer : MonoBehaviour
             agent.ResetPath();
         }
     }
+
+    private void FixedUpdate()
+    {
+        throw new NotImplementedException();
+    }
+
     private IEnumerator Damage()
     {
         isHitting = true;

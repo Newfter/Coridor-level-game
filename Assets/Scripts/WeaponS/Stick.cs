@@ -6,7 +6,8 @@ public class Stick : MonoBehaviour
     private const int StickBaseDamage = 2;
     [SerializeField] private Animator stickAnimator;
     private Damageable damageable;
-    private void Start() { gameObject.GetComponent<MeshRenderer>().enabled = false; }
+    [SerializeField] private GameObject model;
+    private void Start() { model.GetComponent<MeshRenderer>().enabled = false; }
     private void Update()
     {
         var animInProgress = stickAnimator.GetCurrentAnimatorStateInfo(0).IsName("StickAnim");
@@ -15,8 +16,8 @@ public class Stick : MonoBehaviour
 
     private IEnumerator StickCorutine()
     {
-        if(gameObject.GetComponent<MeshRenderer>().enabled) {yield break;}
-        gameObject.GetComponent<MeshRenderer>().enabled = true;
+        if(model.GetComponent<MeshRenderer>().enabled) {yield break;}
+        model.GetComponent<MeshRenderer>().enabled = true;
         stickAnimator.SetBool("IsHitting", true);
         yield return new WaitForSeconds(0.1f);
         Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f ,0));
@@ -44,6 +45,6 @@ public class Stick : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         stickAnimator.SetBool("IsHitting", false);
         yield return new WaitForSeconds(0.1f);
-        gameObject.GetComponent<MeshRenderer>().enabled = false;
+        model.GetComponent<MeshRenderer>().enabled = false;
     }
 }
