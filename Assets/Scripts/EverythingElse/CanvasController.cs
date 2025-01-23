@@ -74,7 +74,7 @@ public class CanvasController : MonoBehaviour
     public void Play()
     {
         Time.timeScale = 1;
-        SceneManager.LoadScene("Scenes/SimpleScene");
+        SceneManager.LoadScene("Scenes/Game");
         click.Play();
     }
     public void Easy() { PlayerPrefs.SetString("Mode", ZombieCreation.Mode.Easy.ToString()); click.Play(); modetext.text = "Easy"; }
