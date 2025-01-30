@@ -30,9 +30,9 @@ public class CanvasController : MonoBehaviour
         coins.text = _coinsInt.ToString();
         diamonds.text = _diamondsInt.ToString();
         musicMixer.SetFloat("music", musicSlider.value);
-        musicMixer.SetFloat("music", soundSlider.value);
+        musicMixer.SetFloat("sound", soundSlider.value);
         if (musicSlider.value != PlayerPrefs.GetFloat("Music")) { PlayerPrefs.SetFloat("Music", musicSlider.value); }
-        if (soundSlider.value != PlayerPrefs.GetFloat("Sound")) { PlayerPrefs.SetFloat("Sound", musicSlider.value); }
+        if (soundSlider.value != PlayerPrefs.GetFloat("Sound")) { PlayerPrefs.SetFloat("Sound", soundSlider.value); }
     }
 
     public void ShopOn()

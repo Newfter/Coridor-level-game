@@ -23,6 +23,7 @@ TagManager:
   - DamagePanel
   - stick
   - Potion
+  - terrain
   layers:
   - Default
   - TransparentFX

@@ -19,15 +19,15 @@ public class Buttons : MonoBehaviour
         if (PlayerPrefs.GetFloat("Music") != null) { musicSlider.value = PlayerPrefs.GetFloat("Music"); }
         if (PlayerPrefs.GetFloat("Sound") != null) { soundSlider.value = PlayerPrefs.GetFloat("Sound"); } 
         musicMixer.SetFloat("music", musicSlider.value);
-        musicMixer.SetFloat("music", soundSlider.value);
+        musicMixer.SetFloat("sound", soundSlider.value);
     }
 
     private void Update()
     {
         musicMixer.SetFloat("music", musicSlider.value);
-        musicMixer.SetFloat("music", soundSlider.value);
+        musicMixer.SetFloat("sound", soundSlider.value);
         if (musicSlider.value != PlayerPrefs.GetFloat("Music")) { PlayerPrefs.SetFloat("Music", musicSlider.value); }
-        if (soundSlider.value != PlayerPrefs.GetFloat("Sound")) { PlayerPrefs.SetFloat("Sound", musicSlider.value); }
+        if (soundSlider.value != PlayerPrefs.GetFloat("Sound")) { PlayerPrefs.SetFloat("Sound", soundSlider.value); }
     }
     public void Menu()
     {

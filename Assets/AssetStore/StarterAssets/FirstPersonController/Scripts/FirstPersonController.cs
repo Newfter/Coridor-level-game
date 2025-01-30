@@ -1,5 +1,7 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.Audio;
+using Random = UnityEngine.Random;
 #if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
 #endif
@@ -12,6 +14,8 @@ namespace StarterAssets
 #endif
 	public class FirstPersonController : MonoBehaviour
 	{
+		[SerializeField] private AudioSource walkingOnRoad, walkingOnGrass, jumping;
+		[SerializeField] private AudioResource[] jump;
 		[Header("Player")]
 		[Tooltip("Move speed of the character in m/s")]
 		public float MoveSpeed = 6.0f;
@@ -64,6 +68,7 @@ namespace StarterAssets
 		// timeout deltatime
 		private float _jumpTimeoutDelta;
 		private float _fallTimeoutDelta;
+		private WalkingSound wS;
 
 	
 #if ENABLE_INPUT_SYSTEM
@@ -98,6 +103,7 @@ namespace StarterAssets
 
 		private void Start()
 		{
+			wS = FindAnyObjectByType<WalkingSound>();
 			_controller = GetComponent<CharacterController>();
 			_input = GetComponent<StarterAssetsInputs>();
 #if ENABLE_INPUT_SYSTEM
@@ -116,6 +122,11 @@ namespace StarterAssets
 			JumpAndGravity();
 			GroundedCheck();
 			Move();
+			if (_speed != 0) walkingOnRoad.volume = 1;
+			else
+			{
+				walkingOnRoad.volume = 0;
+			}
 		}
 
 		private void LateUpdate()
@@ -219,6 +230,8 @@ namespace StarterAssets
 				{
 					// the square root of H * -2 * G = how much velocity needed to reach desired height
 					_verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
+					wS.SetSound(jump, jumping);
+					jumping.Play();
 				}
 
 				// jump timeout

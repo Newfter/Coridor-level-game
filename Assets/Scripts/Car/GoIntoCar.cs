@@ -1,16 +1,20 @@
 using StarterAssets;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
 
 public class GoIntoCar : MonoBehaviour
 {
     [SerializeField] private GameObject mainCamera, carPanel, goInText, zKT;
+    [SerializeField] private AudioResource[] carAudioResources;
+    [SerializeField] private AudioSource carStart;
     public bool inCar;
     public CarController currentCar;
+    private WalkingSound wS;
 
     private void Start()
     {
+        wS = FindAnyObjectByType<WalkingSound>();
         inCar = false;
         carPanel.SetActive(false);
         goInText.SetActive(false);
@@ -53,6 +57,7 @@ public class GoIntoCar : MonoBehaviour
        gameObject.GetComponent<BasicRigidBodyPush>().enabled = false;
        gameObject.GetComponent<CharacterController>().enabled = false;
        currentCar.camera.SetActive(true); 
+       wS.SetSound(carAudioResources, carStart);
        carPanel.SetActive(true);
        inCar = true;
        FindAnyObjectByType<WeaponTouch>().bulletPanel.SetActive(false);
