@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1181604142363341190}
   - component: {fileID: 7055474631837015167}
   m_Layer: 0
-  m_Name: RGD-5
+  m_Name: RGD-5Pickup
   m_TagString: Ammo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
