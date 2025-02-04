@@ -34678,21 +34678,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: MajikZombie
       objectReference: {fileID: 0}
-    - target: {fileID: 8042506697930824003, guid: 5d192ac71874d0d4b9b15e0b496e8b3c, type: 3}
-      propertyPath: m_AnchorMax.x
+    - target: {fileID: 3967270813768451823, guid: 5d192ac71874d0d4b9b15e0b496e8b3c, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8042506697930824003, guid: 5d192ac71874d0d4b9b15e0b496e8b3c, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8042506697930824003, guid: 5d192ac71874d0d4b9b15e0b496e8b3c, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 592439663722907435, guid: 5d192ac71874d0d4b9b15e0b496e8b3c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d192ac71874d0d4b9b15e0b496e8b3c, type: 3}
 --- !u!1001 &799955155
 PrefabInstance:
@@ -90386,8 +90387,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -6083909432809833915, guid: 62917645416fe0246ad75a963fa83b15, type: 2}
-  m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 58d4c8adc90939f498d89114b7254f72, type: 3}
+  m_Resource: {fileID: 8300000, guid: 58d4c8adc90939f498d89114b7254f72, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0
   m_Pitch: 1.25
@@ -90433,7 +90434,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
