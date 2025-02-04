@@ -1,14 +1,15 @@
 using System;
 using System.Collections;
 using TMPro;
+using Unity.Mathematics;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class ZombieCreation : MonoBehaviour
 {
     public Mode mode;
-    [SerializeField] private GameObject zombak, lvl2Zombak, lvl3Zombak, lvl4Zombak, zombieBoss;
-    [SerializeField] private Transform player;
+    [SerializeField] private GameObject zombak, lvl2Zombak, lvl3Zombak, lvl4Zombak, zombieBoss, magicZombie;
+    [SerializeField] private Transform player, zombieBossSpawn;
     [SerializeField] private Transform[] spawnPoints;
     public TextMeshProUGUI zombiesOnTheMap, zombiesKilledText;
     private CanvasController cC;
@@ -86,18 +87,29 @@ public class ZombieCreation : MonoBehaviour
         StartCoroutine(IncreasingDificulty());
     }
 
-    private IEnumerator BossSpawn()
+    private void PointChoose()
     {
-        Vector3 zombieSpawnPosition;
         while (true)
-        {
-            yield return null;
-            zombieSpawnPosition = spawnPoints[Random.Range(0, spawnPoints.Length)].position;
-            if (Vector3.Distance( zombieSpawnPosition, player.position) > 50)
+        { 
+            zombieBossSpawn = spawnPoints[Random.Range(0, spawnPoints.Length)];
+            if (Vector3.Distance( zombieBossSpawn.position, player.position) > 50)
                 break;
         }
-        yield return new WaitForSeconds(120);
-        Instantiate(zombieBoss,  zombieSpawnPosition, Quaternion.identity);
+    }
+    private IEnumerator BossSpawn()
+    {
+        PointChoose();
+        yield return new WaitForSeconds(30);
+        Instantiate(magicZombie, zombieBossSpawn.position, Quaternion.identity);
+        PointChoose();
+        yield return new WaitForSeconds(30);
+        Instantiate(magicZombie, zombieBossSpawn.position, Quaternion.identity);
+        PointChoose();
+        yield return new WaitForSeconds(30);
+        Instantiate(magicZombie, zombieBossSpawn.position, Quaternion.identity);
+        PointChoose();
+        yield return new WaitForSeconds(30);
+        Instantiate(zombieBoss,  zombieBossSpawn.position, Quaternion.identity);
         StartCoroutine(BossSpawn());
     }
 }
