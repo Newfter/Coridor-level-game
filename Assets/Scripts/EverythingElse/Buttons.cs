@@ -1,25 +1,44 @@
+using System.Collections;
 using StarterAssets;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Audio;
 using UnityEngine.UI;
-
 public class Buttons : MonoBehaviour
 {
     [SerializeField] private Slider musicSlider, soundSlider;
     [SerializeField] private AudioMixer musicMixer;
-    [SerializeField] private GameObject pausePanel, settingsPanel;
-    [SerializeField] private AudioSource click;
+    [SerializeField] private GameObject pausePanel, settingsPanel, taskText, stickText, zombieText, startPanel;
+    [SerializeField] private AudioSource click, survive;
     private CoinController cC;
 
     private void Start()
     {
+        StartCoroutine(StartTask());
         pausePanel.SetActive(false);
         cC = FindFirstObjectByType<CoinController>();
         if (PlayerPrefs.GetFloat("Music") != null) { musicSlider.value = PlayerPrefs.GetFloat("Music"); }
         if (PlayerPrefs.GetFloat("Sound") != null) { soundSlider.value = PlayerPrefs.GetFloat("Sound"); } 
         musicMixer.SetFloat("music", musicSlider.value);
         musicMixer.SetFloat("sound", soundSlider.value);
+    }
+
+    private IEnumerator StartTask()
+    {
+        Time.timeScale = 0.1f;
+        startPanel.SetActive(true);
+        stickText.SetActive(true);
+        yield return new WaitForSeconds(0.2f);
+        Destroy(stickText);
+        zombieText.SetActive(true);
+        yield return new WaitForSeconds(0.2f);
+        survive.Play();
+        Destroy(zombieText);
+        taskText.SetActive(true);
+        Destroy(taskText, 2);
+        Destroy(startPanel, 2);
+        Destroy(survive, 10);
+        Time.timeScale = 1;
     }
 
     private void Update()

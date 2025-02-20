@@ -12,7 +12,7 @@ public class Damageable : MonoBehaviour
     private ZombieCreation _zC;
     private Transform _player;
     private CoinController _coinController;
-    private bool _isKilled;
+    public bool _isKilled;
 
     private void Start()
     {

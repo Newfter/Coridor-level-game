@@ -5,7 +5,8 @@ using UnityEngine.InputSystem;
 
 public class GoIntoCar : MonoBehaviour
 {
-    [SerializeField] private GameObject mainCamera, carPanel, goInText, zKT;
+    [SerializeField] private GameObject[] canvases;
+    [SerializeField] private GameObject mainCamera, carPanel, goInText;
     [SerializeField] private AudioResource[] carAudioResources;
     [SerializeField] private AudioSource carStart;
     public bool inCar;
@@ -56,13 +57,11 @@ public class GoIntoCar : MonoBehaviour
        gameObject.GetComponent<FirstPersonController>().enabled = false;
        gameObject.GetComponent<BasicRigidBodyPush>().enabled = false;
        gameObject.GetComponent<CharacterController>().enabled = false;
+       foreach (var i in canvases) { i.SetActive(false); }
        currentCar.camera.SetActive(true); 
        wS.SetSound(carAudioResources, carStart);
        carPanel.SetActive(true);
        inCar = true;
-       FindAnyObjectByType<WeaponTouch>().bulletPanel.SetActive(false);
-       FindAnyObjectByType<InstGrenata>().grenadePanel.SetActive(false);
-       zKT.SetActive(false);
     }
     public void GoOutOfcar()
     {
@@ -77,10 +76,11 @@ public class GoIntoCar : MonoBehaviour
         gameObject.GetComponent<FirstPersonController>().enabled = true;
         gameObject.GetComponent<BasicRigidBodyPush>().enabled = true;
         gameObject.GetComponent<CharacterController>().enabled = true;
+        foreach (var i in canvases) { i.SetActive(true); }
         if(FindAnyObjectByType<WeaponTouch>().haveGun) { FindAnyObjectByType<WeaponTouch>().bulletPanel.SetActive(true); }
-        zKT.SetActive(true);
+        else{FindAnyObjectByType<WeaponTouch>().bulletPanel.SetActive(false);}
         if (FindAnyObjectByType<InstGrenata>().haveGrenade) { FindAnyObjectByType<InstGrenata>().grenadePanel.SetActive(true); }
-        
+        else { FindAnyObjectByType<InstGrenata>().grenadePanel.SetActive(true); }
         gameObject.transform.position = currentCar.spawn.position;
         currentCar.playerInCar = false;
         currentCar = null;
